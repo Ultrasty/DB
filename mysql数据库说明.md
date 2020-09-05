@@ -14,7 +14,7 @@ ip地址：121.199.77.139
 1. 去掉了default_record中的time
 1. department添加phone_number
 
-ps：大多数外码尚未添加
-
-
+ps：~~大多数外码尚未添加~~  
 修改日期：2020.9.4
+
+[2020-09-05 17:33]外码已经全部加上了，还加了一些初始数据，healthsystem.sql文件为数据库的备份
