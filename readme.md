@@ -10,7 +10,7 @@ Bootstrap.css提供了很多现成的预定义的样式，https://v3.bootcss.com
 
 pages/lib文件夹中是官方预编译的Bootstrap.css和Bootstrap.js，以及Vue.js
 
-index.html是左侧导航列表的模板，页面右侧是一个iframe元素，因此每个页面的开发都可以很简洁。
+index.html是左侧导航列表的模板，来自于https://github.com/gyfeng1003/management ，页面右侧是一个iframe元素，因此每个页面的开发都可以很简洁。
 
 pages/Template文件夹中是模板index.html的一些依赖项，所以可以卜用管。
 
