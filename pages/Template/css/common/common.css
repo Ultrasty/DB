@@ -1,0 +1,70 @@
+.pl-0{
+    padding-left: 0;
+}
+.pr-0{
+    padding-right: 0;
+}
+.btn-del{
+    color: #ff4f0f;
+    background-color: #fff;
+    border-color: #ff4f0f;
+}
+.btn-del:active{
+    color: #ff0000;
+    background-color: #fff;
+    border-color: #ff0000;
+}
+.btn.btn-del:hover{
+    color: #ff0000;
+}
+.btn.btn-del:focus{
+    color: #ff0000;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    outline: none;
+    outline-offset: 0;
+}
+
+.bella-checkbox{
+    position: relative;
+}
+/** 将初始的checkbox的样式改变 */
+.bella-checkbox input[type="checkbox"] {
+    opacity: 0; /*将初始的checkbox隐藏起来*/
+}
+
+/** 设计新的checkbox，位置 */
+.bella-checkbox label:before {
+    content: '';
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    border-radius: 2px;
+    border: 1px solid #bbb;
+    background: #fff;
+}
+
+/** 点击初始的checkbox，将新的checkbox关联起来 */
+.bella-checkbox input[type="checkbox"]:checked + label:after {
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    content: "\e013";
+    top: 0;
+    left: 0;
+    position: absolute;
+    font-size: 11px;
+    width: 19px;
+    height: 19px;
+    color: #fff;
+    background: #1890fc;
+    border-radius: 2px;
+    font-weight: normal;
+}
+
+.bella-checkbox label {
+    cursor: pointer;
+    text-align: center;
+    position: absolute;
+    left: 10px;
+}
+

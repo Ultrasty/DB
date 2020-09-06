@@ -1,0 +1,31 @@
+#user-list .tip {
+  color: #666;
+  font-size: 12px;
+  padding-left: 10px;
+  font-weight: normal;
+}
+#user-list .page-header {
+  border-bottom-width: 2px;
+}
+#user-list .panel-footer {
+  background: #fff;
+}
+#user-list .input-group-addon {
+  background-color: #fff;
+}
+#user-list .search input {
+  border-right: 0;
+}
+.form-group {
+  padding-left: 10px;
+}
+@media (min-width: 992px) {
+  .text-pos {
+    text-align: right;
+  }
+}
+@media (min-width: 768px) {
+  .text-pos {
+    text-align: right;
+  }
+}

@@ -1,88 +1,322 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="pages/bootstrap.css">
-    <script src="pages/vue.js"></script>
-    <style>
-        body {
-            padding-top: 20px;
-        }
-        .starter{
-            padding: 40px 15px;
-            text-align: center;
-        }
-    </style>
+    <meta name="renderer" content="webkit">
+
+    <title>金蝶管易云教学平台</title>
+
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+    <!--<link rel="shortcut icon" href="favicon.ico">-->
+    <link href="pages/Template/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="pages/Template/css/common/font-awesome.css" rel="stylesheet">
+    <link href="pages/Template/lib/tabs/bootstrap-tab.css" rel="stylesheet">
+    <link href="pages/Template/css/common/style.css" rel="stylesheet">
 </head>
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a href="#" class="navbar-brand">
-                学生健康信息数据库/疫情打卡系统
-            </a>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div id="wrapper">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close"><i class="fa fa-times-circle"></i>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页</a></li>
-                <li><a href="#">登录</a></li>
-                <li><a href="#">关于本课设</a></li>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs" style="font-size:20px;">
+                                        <i class="fa fa-area-chart"></i>
+                                        <strong class="font-bold" style="font-style: italic;">Kingdee</strong>
+                                    </span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="logo-element">
+                        <div class="logo">
+                            <img class="head" src="pages/Template/images/rabbit.jpg">
+                        </div>
+                        <div class="nick-name">草莓不甜</div>
+                        <div>学生</div>
+                    </div>
+                </li>
+                <li>
+                    <a class="J_menuItem" href="views/user/user-list.html">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">主页</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-user"></i>
+                        <span class="nav-label">用户管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-users"></i>
+                        <span class="nav-label">学生管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-user-times"></i>
+                        <span class="nav-label">教师管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-file-o"></i>
+                        <span class="nav-label">在线学习</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-files-o"></i>
+                        <span class="nav-label">教学活动</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-edit"></i>
+                        <span class="nav-label">教学成果</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-rebel"></i>
+                        <span class="nav-label">通知</span>
+                    </a>
+                </li>
             </ul>
         </div>
-    </div>
-</nav>
+    </nav>
+    <!--左侧导航结束-->
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top border-bottom" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                        <div class="form-group">
+                            <span class="form-control">欢迎使用管易云教学平台！</span>
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="mailbox.html">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i> 您有16条未读消息
+                                        <span class="pull-right text-muted small">4分钟前</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="profile.html">
+                                    <div>
+                                        <i class="fa fa-qq fa-fw"></i> 3条新回复
+                                        <span class="pull-right text-muted small">12分钟钱</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a class="J_menuItem" href="notifications.html">
+                                        <strong>查看所有 </strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <img src="pages/Template/images/rabbit.jpg" style="width: 24px;height: 24px;" class="head"> <span style="font-size: 12px;">草莓不甜</span>
+                        </a>
+                        <!--<ul class="dropdown-menu dropdown-messages">-->
+                            <!--<li class="m-t-xs">-->
+                                <!--<div class="dropdown-messages-box">-->
+                                    <!--<a href="profile.html" class="pull-left">-->
+                                        <!--&lt;!&ndash;<img alt="image" class="img-circle" src="img/a7.jpg">&ndash;&gt;-->
+                                    <!--</a>-->
+                                    <!--<div class="media-body">-->
+                                        <!--<small class="pull-right">46小时前</small>-->
+                                        <!--<strong>小四</strong> 是不是只有我死了,你们才不骂爵迹-->
+                                        <!--<br>-->
+                                        <!--<small class="text-muted">3天前 2014.11.8</small>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="divider"></li>-->
+                            <!--<li>-->
+                                <!--<div class="dropdown-messages-box">-->
+                                    <!--<a href="profile.html" class="pull-left">-->
 
-<div class="container" id="app">
-    <div class="starter">
-        <h1>
-            这是一个demo
-        </h1>
-        <p class="lead">
-            欢迎来到数据库世界
-        </p>
+                                    <!--</a>-->
+                                    <!--<div class="media-body ">-->
+                                        <!--<small class="pull-right text-navy">25小时前</small>-->
+                                        <!--<strong>二愣子</strong> 呵呵-->
+                                        <!--<br>-->
+                                        <!--<small class="text-muted">昨天</small>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="divider"></li>-->
+                            <!--<li>-->
+                                <!--<div class="text-center link-block">-->
+                                    <!--<a class="J_menuItem" href="mailbox.html">-->
+                                        <!--<i class="fa fa-envelope"></i> <strong> 查看所有消息</strong>-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    </li>
+                </ul>
+            </nav>
+            <nav class="navbar navbar-static-top" style="min-height: 30px; line-height: 30px;">
+                <div class="navbar-header" style="padding-left: 20px;">用户管理</div>
+            </nav>
+        </div>
+        <div class="row J_mainContent" id="content-main">
+            <iframe id="J_iframe" width="100%" height="100%" src="views/user/user-list.html" frameborder="0" data-id="user-list.html" seamless></iframe>
+        </div>
+        <div class="row" style="padding-left: 15px;;background: #eee;height: 50px;line-height:50px;box-sizing: border-box;">
+            @copyright 2018
+        </div>
     </div>
-
-    <table class="table">
-        <caption>样例数据表</caption>
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>{{message + "!"}}</th>
-            <th>Last Name</th>
-            <th>Username</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
+    <!--右侧部分结束-->
 </div>
+
+<!-- 全局js -->
+<script src="pages/Template/lib/jquery-3.3.1.min.js"></script>
+<script src="pages/Template/lib/bootstrap/bootstrap.min.js"></script>
+<script src="pages/Template/lib/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="pages/Template/lib/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="pages/Template/lib/plugins/layer/layer.min.js"></script>
+
+<!-- 自定义js -->
+<script src="pages/Template/js/main.js"></script>
+<script type="text/javascript" src="pages/Template/js/index.js"></script>
+
+<!-- 第三方插件 -->
+<script src="pages/Template/lib/plugins/pace/pace.min.js"></script>
+<script src="pages/Template/lib/tabs/bootstrap-tab.js"></script>
 <script>
-    var abc = new Vue({
-        el: "#app",
-        data: {
-            message: "hello",
-        }
-    })
+    // $("#tabContainer").tabs({
+		// data: [{
+		// 	id: 'user-list.html',
+		// 	text: '用户列表',
+		// 	url: "user/user-list.html"
+		// }],
+		// showIndex: 1,
+		// loadAll: false
+    // })
+    //
+    function addTabs(id, text, url){
+        console.log(url)
+	   // var tabs = $("#tabContainer").data("tabs").options.data;
+        // if(tabs.some(function (value) {
+        // 	return value.id == id;
+        // })){
+	        $("#J_iframe").prop('src', url);
+        // }else{
+	     //    $("#tabContainer").data("tabs").addTab({id: id, text: text, closeable: true, url: url})
+	     //    $("#J_iframe").prop('src', url);
+        // }
+    }
+
+    var ch = window.innerHeight;
+    $("#content-main").height(ch-155+'px');
 </script>
 </body>
+
 </html>
