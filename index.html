@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="pages/bootstrap.css">
+    <script src="pages/vue.js"></script>
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .starter{
+            padding: 40px 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">
+                学生健康信息数据库/疫情打卡系统
+            </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页</a></li>
+                <li><a href="#">登录</a></li>
+                <li><a href="#">关于本课设</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container" id="app">
+    <div class="starter">
+        <h1>
+            这是一个demo
+        </h1>
+        <p class="lead">
+            欢迎来到数据库世界
+        </p>
+    </div>
+
+    <table class="table">
+        <caption>样例数据表</caption>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>{{message + "!"}}</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    var abc = new Vue({
+        el: "#app",
+        data: {
+            message: "hello",
+        }
+    })
+</script>
+</body>
+</html>
