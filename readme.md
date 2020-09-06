@@ -5,10 +5,13 @@
 项目地址https://github.com/Ultrasty/DB/
 
 #### 开发环境
-MySQL 8.0.21
-jQuery v3.5.1
-Bootstrap v3.3.7
-Vue.js v2.6.11
+> MySQL 8.0.21
+>
+> jQuery v3.5.1
+>
+> Bootstrap v3.3.7
+>
+> Vue.js v2.6.11
 
 #### 数据库连接方式:
 
