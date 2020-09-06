@@ -4,8 +4,24 @@
 
 项目地址https://github.com/Ultrasty/DB/
 
+用jQuery是因为Bootstrap.js依赖于jQuery.js，Bootstrap.js可以提供一些动态效果。
+
+Bootstrap.css提供了很多现成的预定义的样式，https://v3.bootcss.com/css/ 提供了使用他们的代码。
+
+pages/lib文件夹中是官方预编译的Bootstrap.css和Bootstrap.js，以及Vue.js
+
+index.html是左侧导航列表的模板，页面右侧是一个iframe元素，因此每个页面的开发都可以很简洁。
+
+pages/Template文件夹中是模板index.html的一些依赖项，所以可以卜用管。
+
 #### 开发环境
-mysql 8.0.21
+> MySQL 8.0.21
+>
+> jQuery v3.5.1
+>
+> Bootstrap v3.3.7
+>
+> Vue.js v2.6.11
 
 #### 数据库连接方式:
 
@@ -32,4 +48,4 @@ mysql 8.0.21
 
 ps：~~大多数外码尚未添加~~  
 
-[2020-09-05 17:33]外码已经全部加上了，还加了一些初始数据，healthsystem.sql文件为数据库的备份，更改了一些字段的数据类型。增加了前端文件夹pages和后端文件夹cgi-bin
+[2020-09-05 17:33]外码已经全部加上了，还加了一些初始数据，healthsystem.sql文件为数据库的备份，更改了一些字段的数据类型。增加了前端文件夹pages和后端文件夹api
