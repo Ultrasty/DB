@@ -14,6 +14,15 @@ index.html是左侧导航列表的模板，来自于https://github.com/gyfeng100
 
 pages/Template文件夹中是模板index.html的一些依赖项，所以可以卜用管。
 
+#### 一些高质量的参考资料
+
+https://www.bilibili.com/video/BV12J411m7MG?from=search&seid=1321871634702043513 Vue教学
+
+https://www.bilibili.com/video/BV11E411n74a?from=search&seid=12974635524049425066 快速建立.NET core Web API
+
+https://v3.bootcss.com/css/ bootstrap的CSS样式表
+
+
 #### 开发环境
 > MySQL 8.0.21
 >
