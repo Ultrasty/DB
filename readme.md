@@ -60,3 +60,35 @@ https://v3.bootcss.com/css/ bootstrap的CSS样式表
 ps：~~大多数外码尚未添加~~  
 
 [2020-09-05 17:33]外码已经全部加上了，还加了一些初始数据，healthsystem.sql文件为数据库的备份，更改了一些字段的数据类型。增加了前端文件夹pages和后端文件夹api
+
+
+
+## 接口约定
+
+imsty.cn对应的IP为101.132.145.102
+
+[POST]
+
+http://101.132.145.102:5000/api/gettablebyname
+
+接口请求包括以下内容：
+
+| 参数  | 类型   | 说明 |
+| ----- | ------ | ---- |
+| table | string | 表名 |
+
+请求示例：
+
+```json
+{"table":"student"}
+```
+
+接口响应包括以下内容：
+
+| 参数             | 类型      | 说明                       |
+| ---------------- | --------- | -------------------------- |
+| countofrows      | int       | 请求的数据表的行数         |
+| countofcolumns   | int       | 请求的数据表的列数         |
+| tableheader      | string[]  | 请求的数据表的字段名的集合 |
+| tableinformation | string[,] | 请求的数据表的值的集合     |
+
