@@ -32,7 +32,7 @@ https://v3.bootcss.com/css/ bootstrap的CSS样式表
 >
 > Vue.js v2.6.11
 >
->.NET core 2.1
+>.NET core 2.1.1
 
 #### 数据库连接方式:
 
@@ -42,7 +42,11 @@ https://v3.bootcss.com/css/ bootstrap的CSS样式表
 > 
 > 密码：123
 
+#### 服务器列表
 
+>121.199.77.139 数据库、接口 by LZH
+>
+>101.132.145.102 接口 by STY
 
 #### LOGS
 
