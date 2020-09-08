@@ -31,6 +31,8 @@ https://v3.bootcss.com/css/ bootstrap的CSS样式表
 > Bootstrap v3.3.7
 >
 > Vue.js v2.6.11
+>
+>.NET core 2.1
 
 #### 数据库连接方式:
 
