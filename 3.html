@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>查询学生出校返校时间</title>
+    <title>查询符合返校条件的学生</title>
 	
     <link rel="stylesheet" href="pages/lib/bootstrap.css">
     <script src="pages/lib/vue.js"></script>
@@ -29,6 +29,11 @@
 
 
     </style>
+	<script>
+		function myFunction(){
+		
+		}
+	</script>
 </head>
 <body>
 
@@ -44,21 +49,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">查询学生出校返校时间</a>
+            <a class="navbar-brand" href="#">查询符合返校条件的学生</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            
-            <form class="navbar-form navbar-left" id="query_time" name="query_time" method="post">
-				<span>学生ID:</span>
-                <div class="form-group">
-                    <input id="student_ID" type="text" class="form-control" placeholder="输入查询学生ID">
-                </div>
-                <button type="submit" class="btn btn-default">查询</button>
+            <iframe name=submitwin style='display:none'></iframe>
+            <form class="navbar-form navbar-left" id="query_time" name="query_time" target=submitwin method="post">
+				<label>返校日期</label>
+				<input id="return_time" type="date" class="form-control"/>
+                <button type="submit" class="btn btn-default" onclick="myFunction()">查询</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="1.html">清空</a></li>
+                <li><a href="3.html">清空</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">其他 <span class="caret"></span></a>
@@ -92,36 +95,26 @@
         </div>
     </div>
 </nav>
-
-<!--Vue.js接管的部分-->
 <div class="container" id="app">
+	<span style="font-size:10px">*返校条件：该学生处于安全的省市;该学生当前健康状态健康;该学生一周内没有发生跨省活动记录</span>
     <table class="table table-hover ">
-        <caption>学生出校返校时间</caption>
+        <caption>符合条件的返校学生</caption>
         <thead>
         <tr>
             <th>学生ID</th>
-            <th>第i次</th>
-            <th>出校时间</th>
-            <th>返校时间</th>
+            <th>学生姓名</th>
+            <th>联系方式</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th scope="row">1</th>
-            <td>1</td>
-            <td>2020.8.10</td>
-            <td>2020.8.14</td>
-        </tr>
-        <tr>
-            <th scope="row"></th>
-            <td>2</td>
-            <td>2020.8.20</td>
-            <td>2020.9.1</td>
+            <td id="student_id"></td>
+            <td id="start_time"></td>
+			<td id="connect_way"></td>
         </tr>
         </tbody>
     </table>
 </div>
-
 
 </body>
 </html>
