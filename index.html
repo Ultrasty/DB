@@ -440,105 +440,138 @@
         .flip-list-enter-active, .flip-list-leave-active {
             transition: all 1s;
         }
+
         .flip-list-enter, .flip-list-leave-active {
             opacity: 0;
         }
+
         #wallpaper {
             position: absolute;
-            top:0;
+            top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
         }
-        ul, ol { list-style: none; }
+
+        ul, ol {
+            list-style: none;
+        }
 
     </style>
 </head>
 
 <body>
-    <div id="app">
-        <!--
-        <div id="background-slideshow">
-            <div class=" slide">
-                <div class="wallpaper" v-bind:style="thestyle" id="wallpaper">
+<div id="app">
+    <!--
+    <div id="background-slideshow">
+        <div class=" slide">
+            <div class="wallpaper" v-bind:style="thestyle" id="wallpaper">
 
-                </div>
             </div>
-
         </div>
-        -->
-        <transition-group name="flip-list" tag="ul" >
-            <li v-for="curImg in currImgs" v-bind:key="curImg" class="list-item" id="wallpaper" style="z-index:-10;">
-                <img :src="curImg" style="width: 100vw;height:50vw;">
-            </li>
-        </transition-group>
 
-        <div class="signup-form" style="margin-top: 70px">
-            <div class="signup-form__logo-box">
-                <div class="signup-form__logo"></div>
-                <div class="signup-form__catchphrase">学生健康信息数据库</div>
-            </div>
+    </div>
+    -->
+    <transition-group name="flip-list" tag="ul">
+        <li v-for="curImg in currImgs" v-bind:key="curImg" class="list-item" id="wallpaper" style="z-index:-10;">
+            <img :src="curImg" style="width: 100vw;height:50vw;">
+        </li>
+    </transition-group>
 
-            <div id="container-login2">
-                <div id="LoginComponent2">
-                    <div>
-                        <div class="input-field-group">
-                            <div class="input-field"><input type="text" autocomplete="username"
-                                    placeholder="邮箱地址/pixiv ID" autocapitalize="off" value=""></div>
-                            <div class="input-field"><input type="password" autocomplete="current-password"
-                                    placeholder="密码" autocapitalize="off" value=""></div>
+    <div class="signup-form" style="margin-top: 70px">
+        <div class="signup-form__logo-box">
+            <div class="signup-form__logo"></div>
+            <div class="signup-form__catchphrase">学生健康信息数据库</div>
+        </div>
+
+        <div id="container-login2">
+            <div id="LoginComponent2">
+                <div>
+                    <div class="input-field-group">
+                        <div class="input-field"><input type="text" autocomplete="username"
+                                                        placeholder="学号" autocapitalize="off" v-model="student_number">
                         </div>
-                        <ul class="uuvlpj-0 jpfKJC"></ul>
-                        <button type="submit" class="signup-form__submit">登录</button>
-                        <div class="signup-form-nav"><a href="javascript:void(0)">忘记了密码</a>
-                        </div>
+                        <div class="input-field"><input type="password" autocomplete="current-password"
+                                                        placeholder="密码" autocapitalize="off" v-model="password"></div>
+                    </div>
+                    <ul class="uuvlpj-0 jpfKJC"></ul>
+                    <button type="submit" class="signup-form__submit" @click="login">登录</button>
+                    <div class="signup-form-nav"><a href="javascript:void(0)">忘记了密码</a>
                     </div>
                 </div>
             </div>
-            <div class="signup-form__sns-btn-area login">
-                <div class="sns-button-list"><a href="javascript:void(0)" class="btn-item btn-weibo ga-event  login"
-                        data-category="login_page_pc" data-action="sns-login-button-click" data-label="sina"
-                        rel="nofollow">通过统一身份认证登录</a><a href="javascript:void(0)"
-                        class="btn-item btn-gplus ga-event  login" data-category="login_page_pc"
-                        data-action="sns-login-button-click" data-label="googleplus" rel="nofollow">通过手机号登录</a></div>
-            </div>
-            <div class="recaptcha-terms">本站点由软院数据库课设某项目组提供技术支持
-            </div>
-
         </div>
+        <div class="signup-form__sns-btn-area login">
+            <div class="sns-button-list"><a href="javascript:void(0)" class="btn-item btn-weibo ga-event  login"
+                                            data-category="login_page_pc" data-action="sns-login-button-click"
+                                            data-label="sina"
+                                            rel="nofollow">通过统一身份认证登录</a><a href="javascript:void(0)"
+                                                                            class="btn-item btn-gplus ga-event  login"
+                                                                            data-category="login_page_pc"
+                                                                            data-action="sns-login-button-click"
+                                                                            data-label="googleplus" rel="nofollow">通过手机号登录</a>
+            </div>
+        </div>
+        <div class="recaptcha-terms">本站点由软院数据库课设某项目组提供技术支持
+        </div>
+
     </div>
+</div>
 
 
-
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    
-    <script>
-        new Vue({
+<script src="pages/lib/vue.js"></script>
+<script src="pages/lib/axios.js"></script>
+<script>
+    new Vue({
         el: '#app',
         data: {
             currImgs: [],
             imgs: ["./pages/login/img/background1.jpg",
-                    "./pages/login/img/background2.jpg", "./pages/login/img/background3.jpg",
-                    "./pages/login/img/background4.jpg", "./pages/login/img/background5.jpg",
-                    "./pages/login/img/background6.jpg","./pages/login/img/background7.jpg"
-                ],
-            index: 0
+                "./pages/login/img/background2.jpg", "./pages/login/img/background3.jpg",
+                "./pages/login/img/background4.jpg", "./pages/login/img/background5.jpg",
+                "./pages/login/img/background6.jpg", "./pages/login/img/background7.jpg"
+            ],
+            index: 0,
+            student_number: "",
+            password: "",
+            istrue: 1
         },
         mounted: function () {
             this.currImgs = [this.imgs[0]];
             this.startChange();
         },
         methods: {
+            login: function () {
+                let that = this;
+                let url = "http://121.199.77.139:8090/student/login";
+                axios.post(url, {
+                    "id": that.student_number,
+                    "password": that.password
+                }).then(function (response) {
+                    if (response.data.result == "success") {
+                        that.istrue = 1;
+                    } else that.istrue = 0;
+
+                }, function (err) {
+                    console.log(err);
+                });
+                if (this.istrue == 1) {
+                    alert("登陆成功");
+                    window.location.href="main.html";
+                } else
+                    alert("登录失败");
+
+            },
             startChange: function () {
                 var _this = this;
                 setInterval(function () {
-					_this.index=(_this.index+1) % _this.imgs.length;
+                    _this.index = (_this.index + 1) % _this.imgs.length;
                     _this.currImgs.splice(0, 1, _this.imgs[_this.index]);
                 }, 3000);
             }
         }
     })
-    </script>
+</script>
 
 </body>
 
