@@ -23,6 +23,15 @@ namespace API1.Controllers
             tableinfo resp = new tableinfo();
             try
             {
+
+                string ip = Request.Headers["X-Forwarded-For"].FirstOrDefault();
+                if (string.IsNullOrEmpty(ip))
+                ip = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+                Console.WriteLine("=============================");
+                //使用postman调用接口，使用部署后的网站的页面调用接口，看看请求方的IP是不是同一个
+                //是的话可以在网站全部部署后阻止跨域ajax请求，提高安全性
+                Console.WriteLine(ip);
+                Console.WriteLine("=============================");
                 //从配置文件中读取字符串
                 Json_File _Json_File = new Json_File();
                 var configuration = _Json_File.Read_Json_File();
