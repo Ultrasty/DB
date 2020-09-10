@@ -16,7 +16,7 @@
             value: "https:\/\/s.pximg.net\/accounts\/assets\/"
         })
     </script>-->
-    <link rel="stylesheet" href="pages/login/index_files/bundle.ed9d4c7fda9f679351ec.css">
+    <link rel="stylesheet" href="./index_files/bundle.ed9d4c7fda9f679351ec.css">
     <!--<script src="index_files/runtime.f04693da1909ff0170a5.js" charset="utf8" crossorigin="anonymous" defer=""></script>
     <script src="index_files/bundle.b7e5fc21d02e8edc25b3.js" charset="utf8" crossorigin="anonymous" defer=""></script>
     <script src="index_files/commons.e1ec455e047326d99de8.js" charset="utf8" crossorigin="anonymous" defer=""></script>
@@ -436,42 +436,19 @@
         .hide[data-v-cef78672] {
             display: none
         }
-
-        .flip-list-enter-active, .flip-list-leave-active {
-            transition: all 1s;
-        }
-        .flip-list-enter, .flip-list-leave-active {
-            opacity: 0;
-        }
-        #wallpaper {
-            position: absolute;
-            top:0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-        }
-        ul, ol { list-style: none; }
-
     </style>
 </head>
 
 <body>
     <div id="app">
-        <!--
         <div id="background-slideshow">
             <div class=" slide">
-                <div class="wallpaper" v-bind:style="thestyle" id="wallpaper">
+                <div class="wallpaper" v-bind:style="thestyle">
 
                 </div>
             </div>
 
         </div>
-        -->
-        <transition-group name="flip-list" tag="ul" >
-            <li v-for="curImg in currImgs" v-bind:key="curImg" class="list-item" id="wallpaper" style="z-index:-10;">
-                <img :src="curImg" style="width: 100vw;height:50vw;">
-            </li>
-        </transition-group>
 
         <div class="signup-form" style="margin-top: 70px">
             <div class="signup-form__logo-box">
@@ -511,33 +488,33 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    
     <script>
-        new Vue({
-        el: '#app',
-        data: {
-            currImgs: [],
-            imgs: ["./pages/login/img/background1.jpg",
-                    "./pages/login/img/background2.jpg", "./pages/login/img/background3.jpg",
-                    "./pages/login/img/background4.jpg", "./pages/login/img/background5.jpg",
-                    "./pages/login/img/background6.jpg","./pages/login/img/background7.jpg"
+        var abc = new Vue({
+            el: "#app",
+            data: {
+                thelistofimg: ["background-image:url(/img/background1.jpg)",
+                    "background-image:url(/img/background2.jpg)", "background-image:url(/img/background3.jpg)",
+                    "background-image:url(/img/background4.jpg)", "background-image:url(/img/background5.jpg)",
+                    "background-image:url(/img/background6.jpg)","background-image:url(/img/background7.jpg)"
                 ],
-            index: 0
-        },
-        mounted: function () {
-            this.currImgs = [this.imgs[0]];
-            this.startChange();
-        },
-        methods: {
-            startChange: function () {
-                var _this = this;
-                setInterval(function () {
-					_this.index=(_this.index+1) % _this.imgs.length;
-                    _this.currImgs.splice(0, 1, _this.imgs[_this.index]);
-                }, 3000);
-            }
-        }
-    })
+                thestyle: "background-image:url(background1.jpg)",
+                thenum: 1,
+                test:1
+            },
+            methods: {
+                changethestyle: function () {
+                    this.thestyle = this.thelistofimg[this.thenum];
+                    this.thenum=(this.thenum+1) % this.thelistofimg.length;
+                    console.log(this.thestyle);
+                }
+            },
+            mounted() {
+                this.timer += setInterval(this.changethestyle, 1000);
+            },
+            destroyed() {
+                clearInterval(this.timer);
+            },
+        })
     </script>
 
 </body>

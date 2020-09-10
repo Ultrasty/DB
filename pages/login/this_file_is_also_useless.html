@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        
+        .flip-list-enter-active, .flip-list-leave-active {
+            transition: all 1s;
+        }
+        .flip-list-enter, .flip-list-leave-active {
+            opacity: 0;
+        }
+        #app li {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+ 
+    <transition-group name="flip-list" tag="ul" id="app">
+        <li v-for="curImg in currImgs" v-bind:key="curImg" class="list-item">
+            <img :src="curImg">
+        </li>
+    </transition-group>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            currImgs: [],
+            imgs: [
+                'https://img11.360buyimg.com/da/jfs/t4000/107/2234194410/85271/6c24d985/58a50cafNb60886c9.jpg',
+                'https://img20.360buyimg.com/da/jfs/t3154/175/5917485830/129679/f123634c/5897e6a2N83837dd2.jpg',
+                'https://img1.360buyimg.com/da/jfs/t3133/89/5984232745/66970/beaf615c/589ac9bcNe544a72e.jpg',
+                'https://img20.360buyimg.com/da/jfs/t3157/165/6117849901/102894/88bf53b8/589d67b6Ne8986a9e.jpg'
+            ],
+            index: 0
+        },
+        mounted: function () {
+            this.currImgs = [this.imgs[0]];
+            this.startChange();
+        },
+        methods: {
+            startChange: function () {
+                var _this = this;
+                setInterval(function () {
+					_this.index=(_this.index+1) % _this.imgs.length;
+                    _this.currImgs.splice(0, 1, _this.imgs[_this.index]);
+                }, 3000);
+            }
+        }
+    })
+</script>
+</body>
+</html>
