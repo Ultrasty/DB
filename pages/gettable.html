@@ -35,7 +35,7 @@
 <div id="app">
     <!--页面顶部的导航栏-->
     <nav class="navbar navbar-default">
-        <div class="container">
+        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -45,58 +45,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Brand</a>
+                <a class="navbar-brand" href="#">超级管理员-数据表查询</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
+
                 <!--<form class="navbar-form navbar-left">-->
                 <div class="navbar-form navbar-left">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="请输入表名" @keyup.enter="submit"
+                        <input type="text" class="form-control" placeholder="请输入表名" style="width: 250px" @keyup.enter="submit"
                                v-model="tablename">
                     </div>
-                    <button type="submit" class="btn btn-default">查询</button>
+                    <button type="submit" class="btn btn-default" @click="submit">查询</button>
                 </div>
                 <!--</form>-->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
+
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
 
     <!--页面底部的导航栏-->
     <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a href="#" class="navbar-brand">
                     学生健康信息数据库/疫情打卡系统
@@ -112,12 +83,11 @@
         </div>
     </nav>
 
-    <div class="container">
-        <table class="table table-hover ">
-            <caption>样例数据表</caption>
-            <thead>
+    <div class="container-fluid">
+        <table class="table table-hover table-striped table-bordered">
+            <thead v-if="isshow">
             <tr>
-                <th>#</th>
+                <th v-if="isshow">#</th>
                 <th v-for="item in tableheader">{{item}}</th>
             </tr>
             </thead>
@@ -136,17 +106,20 @@
         el: "#app",
         data: {
             message: "hello",
+            isshow:false,
             tablename: "",
             tableheader: [],
             tablecontent: []
         },
         methods: {
             submit: function () {
+
                 var url = "http://101.132.145.102:5000/api/gettable?table=" + this.tablename;
                 let that = this;//在下面的函数中this会变成window，因此要用that
                 axios.get(url).then(function (response) {
                     that.tableheader = response.data.tableheader;
                     that.tablecontent = response.data.tableinformation;
+                    that.isshow=true;
                 }, function (err) {
                     console.log(err);
                 })

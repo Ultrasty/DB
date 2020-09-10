@@ -8,12 +8,11 @@
 
     <title>学生健康信息数据库</title>
 
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="学生健康信息数据库,疫情打卡系统,同济大学,嘉定校区,同济大学嘉定校区,同济大学软件学院,数据库课设,同济大学软件学院数据库课设">
+    <meta name="description" content="学生健康信息数据库/疫情打卡系统是同济大学软件学院数据库课设某项目组的作品">
 
     <!--[if lt IE 9]>
-    <meta http-equiv="refresh" content="0;ie.html" />
-    <![endif]-->
+    <meta http-equiv="refresh" content="0;ie.html"/><![endif]-->
 
     <!--<link rel="shortcut icon" href="favicon.ico">-->
     <link href="pages/lib/bootstrap.css" rel="stylesheet">
@@ -36,7 +35,8 @@
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <div style="width:170px;text-align: center">
-                                        <strong class="font-bold" style="font-style: italic;">TJ Health Database</strong>
+                                        <strong class="font-bold"
+                                                style="font-style: italic;">TJ Health Database</strong>
                                             </div>
                                     </span>
                                 </span>
@@ -44,16 +44,16 @@
                     </div>
                     <div class="logo-element">
                         <div class="logo">
-                            <img class="head" src="pages/Template/images/rabbit.jpg">
+                            <img class="head" v-bind:src="profile_photo">
                         </div>
-                        <div class="nick-name">{{theusername}}</div>
+                        <div class="nick-name">{{student_number}}</div>
                         <div>{{identity}}</div>
                     </div>
                 </li>
                 <li>
-                    <a class="J_menuItem" href="views/user/user-list.html">
+                    <a class="J_menuItem" href="pages/gettable.html">
                         <i class="fa fa-home"></i>
-                        <span class="nav-label">主页</span>
+                        <span class="nav-label">超级管理员-表查询</span>
                     </a>
                 </li>
                 <li>
@@ -64,7 +64,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '表查询', 'pages/gettable.html')">功能1</a>
                         </li>
                         <li>
                             <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
@@ -178,7 +178,8 @@
     <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top border-bottom" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
+                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i
+                        class="fa fa-bars"></i> </a>
                     <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
                         <div class="form-group">
                             <span class="form-control" style="width: 400px">欢迎使用学生健康信息数据库！</span>
@@ -189,7 +190,8 @@
 
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <img src="pages/Template/images/rabbit.jpg" style="width: 24px;height: 24px;" class="head"> <span style="font-size: 12px;">{{theusername}}</span>
+                            <img v-bind:src="profile_photo" style="width: 24px;height: 24px;" class="head">
+                            <span style="font-size: 12px;">{{student_number}}</span>
                         </a>
                     </li>
                 </ul>
@@ -199,7 +201,8 @@
             </nav>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe id="J_iframe" width="100%" height="100%" src="pages/demo.html" frameborder="0" data-id="user-list.html" seamless></iframe>
+            <iframe id="J_iframe" width="100%" height="100%" src="pages/gettable.html" frameborder="0"
+                    data-id="user-list.html" seamless></iframe>
         </div>
 
     </div>
@@ -222,13 +225,13 @@
 <script src="pages/Template/lib/tabs/bootstrap-tab.js"></script>
 <script>
 
-    function addTabs(id, text, url){
+    function addTabs(id, text, url) {
         console.log(url)
-	        $("#J_iframe").prop('src', url);
+        $("#J_iframe").prop('src', url);
     }
 
     var ch = window.innerHeight;
-    $("#content-main").height(ch-105+'px');
+    $("#content-main").height(ch - 105 + 'px');
 </script>
 
 <script>
@@ -236,8 +239,17 @@
         el: "#wrapper",
         data: {
             theusername: "我们的DBA",
-            identity: "管理员"
-        }
+            identity: "管理员",
+            student_number: "",
+            profile_photo:""
+        },
+        mounted: function () {
+            var urlA = location.search.split('?');
+            this.student_number = urlA[1];
+            console.log(this.student_number);
+            this.profile_photo="pages/Template/images/"+this.student_number+".jpg";
+        },
+        methods: {}
     })
 </script>
 </body>
