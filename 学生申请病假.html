@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>学生健康信息数据库</title>
+
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+    <!--<link rel="shortcut icon" href="favicon.ico">-->
+    <link href="pages/lib/bootstrap.css" rel="stylesheet">
+    <link href="pages/Template/css/common/font-awesome.css" rel="stylesheet">
+    <link href="pages/Template/css/common/style.css" rel="stylesheet">
+    <script src="pages/lib/vue.js"></script>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div id="wrapper">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close"><i class="fa fa-times-circle"></i>
+        </div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs" style="font-size:20px;">
+                                        <div style="width:170px;text-align: center">
+                                        <strong class="font-bold" style="font-style: italic;">TJ Health Database</strong>
+                                            </div>
+                                    </span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="logo-element">
+                        <div class="logo">
+                            <img class="head" src="pages/Template/images/rabbit.jpg">
+                        </div>
+                        <div class="nick-name">{{theusername}}</div>
+                        <div>{{identity}}</div>
+                    </div>
+                </li>
+                <li>
+                    <a class="J_menuItem" href="views/user/user-list.html">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">主页</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-user"></i>
+                        <span class="nav-label">请假功能</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">学生申请病假</a>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-users"></i>
+                        <span class="nav-label">功能2</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-user-times"></i>
+                        <span class="nav-label">功能3</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-file-o"></i>
+                        <span class="nav-label">功能4</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-files-o"></i>
+                        <span class="nav-label">功能5</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-edit"></i>
+                        <span class="nav-label">功能6</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-rebel"></i>
+                        <span class="nav-label">功能7</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top border-bottom" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                        <div class="form-group">
+                            <span class="form-control" style="width: 400px">欢迎使用学生健康信息数据库！</span>
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <img src="pages/Template/images/rabbit.jpg" style="width: 24px;height: 24px;" class="head"> <span style="font-size: 12px;">{{theusername}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="navbar navbar-static-top" style="min-height: 30px; line-height: 30px;">
+                <div class="navbar-header" style="padding-left: 20px;">数据库管理</div>
+            </nav>
+        </div>
+        <form>
+        <div style="text-align:center;">
+            <h1>学生申请病假单</h1> 
+          </div>
+          <div style="text-align-last: center;">
+            <div id="app">
+                <p>姓名：</p>
+                <input v-model="message" placeholder="编辑我……">
+                
+                 
+                <p>学号：</p>
+                <input v-model="message2" placeholder="编辑我……">
+              </div> 
+             
+              
+                
+              <div id="ap">
+                 <p>性别：</p>
+                <input type="radio" id="男" value="男" v-model="picked">
+                <label for="男">男</label>
+                <br>
+                <input type="radio" id="女" value="女" v-model="picked">
+                <label for="女">女</label>
+                <br>
+                
+              </div>
+              <div id = 'telephone'>
+                <p>
+                  联系电话：
+                </p>
+                <input v-model = "message7" placeholder= "编辑我……">
+            
+              </div>
+            <div id = "zhuanye">
+              <p>专业学院：</p>
+              <input v-model="message3" placeholder="编辑我……">
+             </div>  
+             <div id = 'nianji'>
+               <p >年级：</p>
+               <input type= "radio" id= "大一" value= "大一" v-model ="picked">
+               <label for = "大一">大一</label>
+               <br>
+               <input type= "radio" id= "大二" value= "大二" v-model ="picked">
+               <label for = "大二">大二</label>
+               <br>
+               <input type= "radio" id= "大三" value= "大三" v-model ="picked">
+               <label for = "大三">大三</label>
+               <br>
+               <input type= "radio" id= "大四" value= "大四" v-model ="picked">
+               <label for = "大四">大四</label>
+               <br>
+             </div>
+             <div id = 'reason'>
+               <p>请填写病假原因：</p>
+              <input v-model = "message4" placeholder= "编辑我……">
+             </div>
+             <div id = 'time'>
+              <p>请填写申请病假时间：</p>
+             <input v-model = "message5" placeholder= "编辑我……">
+          
+             <p>请填写预计销假时间：</p>
+             <input v-model = "message6" placeholder= "编辑我……">
+             <div>
+                 <p></p>
+             </div>
+           
+            </div>
+            
+            <input type = "submit" value ="提交" >
+           
+          </div>
+          </form>
+          </div>
+          <script>
+          
+          new Vue({
+          el: '#app',
+          data: {
+           message:'例如：张三',
+           message2:'例如：1550350'
+          }
+          })
+          
+          new Vue({
+          el: '#ap',
+          data: {
+            picked : '男'
+          }
+          })
+          new Vue({
+            el:'#zhuanye',
+            data:{
+              message3:'例如：软件学院数字媒体'
+            }
+          })
+          new Vue({
+            el:'#nianji',
+            data:{
+              picked : '大一'
+            }
+          })
+          new Vue({
+            el:'#reason',
+            data:{
+              message4:'例如：肚子疼'
+            }
+          })
+          new Vue({
+            el:'#time',
+            data:{
+              message5:'',
+              message6:''
+            }
+          })
+          new Vue({
+            el:'#telephone',
+            data:{
+              message7:''
+            }
+          })
+
+          </script>
+    </div>
+    <!--右侧部分结束-->
+</div>
+
+
+
+<script>
+    var abc = new Vue({
+        el: "#wrapper",
+        data: {
+            theusername: "我们的DBA",
+            identity: "管理员"
+        }
+    })
+</script>
+</body>
+
+</html>
