@@ -7,15 +7,47 @@
     <title>online chat</title>
     <!-- Bootstrap -->
     <link href="lib/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
 
+        .thehead {
+            width: 100vw;
+            border-bottom: 1px solid #e7e7e7;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
+<div id="chatrecord">
+    <div class="thehead">
+        {{thePersonYouTalkTo}}
+    </div>
 
+</div>
 
-test
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="lib/jquery.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="lib/bootstrap.js"></script>
+<script src="lib/vue.js"></script>
+<script>
+    var abc = new Vue({
+        el: "#chatrecord",
+        data: {
+            student_number: "",
+            thePersonYouTalkTo: ""
+        },
+        mounted: function () {
+            var urlA = location.search.split('?');
+            this.thePersonYouTalkTo = urlA[2];
+            this.profile_photo = "pages/Template/images/" + this.student_number + ".jpg";
+        },
+        methods: {}
+    })
+</script>
 </body>
 </html>

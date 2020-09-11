@@ -38,7 +38,7 @@
 
         .search {
             width: 150px;
-            margin-top: 9px;
+            margin-top: 19px;
             margin-left: 9px;
             background-color: #dbd9d8;
         }
@@ -50,13 +50,13 @@
         }
 
         .searchcontent {
-            height: 50px;
+            height: 60px;
             background-color: #edeae8;
         }
 
         .searchbutton {
             width: 50px;
-            margin-top: 9px;
+            margin-top: 19px;
             height: 30px;
             background-color: #dbd9d8;
             font-size: small;
@@ -95,7 +95,7 @@
         </div>
         <div class="col-xs-9 right">
             <div class="embed-responsive" style="height: 76vh">
-                <iframe class="embed-responsive-item" src="chat_record.html"></iframe>
+                <iframe class="embed-responsive-item" v-bind:src="urlOfChatRecord"></iframe>
             </div>
             <div style="height: 24vh;background-color: white;">
                 <img style="display: block;" src="img/chatico.png">
@@ -117,13 +117,15 @@
     var abc = new Vue({
         el: "#chatroom",
         data: {
-
+            student_number:"",
+            thePersonYouTalkTo:"thePersonYouTalkTo~",
+            urlOfChatRecord:"chat_record.html"
         },
         mounted: function () {
             var urlA = location.search.split('?');
             this.student_number = urlA[1];
-            console.log(this.student_number+"from chat");
-            this.profile_photo="pages/Template/images/"+this.student_number+".jpg";
+            this.urlOfChatRecord = "chat_record.html?" + this.student_number + "?" + this.thePersonYouTalkTo;
+            //console.log(this.student_number+"from chat");
         },
         methods: {
 
