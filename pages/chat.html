@@ -74,6 +74,13 @@
             background-color: #f5f5f5;
             padding: 0;
         }
+
+        .theprofile{
+            width: 42px;
+            height: 42px;
+            margin-top: 15px;
+        }
+
     </style>
 </head>
 <body>
@@ -89,7 +96,7 @@
                 </div>
             </div>
             <div class="col-xs-12 person">
-
+                <img class="theprofile" v-bind:src="theprofile">
             </div>
 
         </div>
@@ -119,12 +126,14 @@
         data: {
             student_number:"",
             thePersonYouTalkTo:"thePersonYouTalkTo~",
-            urlOfChatRecord:"chat_record.html"
+            urlOfChatRecord:"chat_record.html",
+            theprofile:""
         },
         mounted: function () {
             var urlA = location.search.split('?');
             this.student_number = urlA[1];
             this.urlOfChatRecord = "chat_record.html?" + this.student_number + "?" + this.thePersonYouTalkTo;
+            this.theprofile="template/images/"+this.student_number+".jpg";
             //console.log(this.student_number+"from chat");
         },
         methods: {
