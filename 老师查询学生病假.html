@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>老师查询病假</title>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <form>
+        <div style="text-align:center;">
+            <h1>老师查询学生病假</h1> 
+          </div>
+          <div style="text-align-last: center;">
+            <div id="app">
+                <p>姓名：</p>
+                <input v-model="message" placeholder="">
+                
+                 
+                <p>学号：</p>
+                <input v-model="message2" placeholder="">
+              </div> 
+             
+              
+                
+              <div id="ap">
+                 <p>学生性别：</p>
+                <input type="radio" id="男" value="男" v-model="picked">
+                <label for="男">男</label>
+                <br>
+                <input type="radio" id="女" value="女" v-model="picked">
+                <label for="女">女</label>
+                <br>
+                
+              </div>
+              <div id = 'telephone'>
+                <p>
+                  学生联系电话：
+                </p>
+                <input v-model = "message7" placeholder= "">
+            
+              </div>
+            <div id = "zhuanye">
+              <p>专业学院：</p>
+              <input v-model="message3" placeholder="">
+             </div>  
+             <div id = 'nianji'>
+               <p >年级：</p>
+               <input type= "radio" id= "大一" value= "大一" v-model ="picked">
+               <label for = "大一">大一</label>
+               <br>
+               <input type= "radio" id= "大二" value= "大二" v-model ="picked">
+               <label for = "大二">大二</label>
+               <br>
+               <input type= "radio" id= "大三" value= "大三" v-model ="picked">
+               <label for = "大三">大三</label>
+               <br>
+               <input type= "radio" id= "大四" value= "大四" v-model ="picked">
+               <label for = "大四">大四</label>
+               <br>
+             </div>
+             <div id = 'reason'>
+               <p>学生病假原因：</p>
+              <input v-model = "message4" placeholder= "">
+             </div>
+             <div id = 'time'>
+              <p>学生申请病假时间：</p>
+             <input v-model = "message5" placeholder= "">
+          
+             <p>学生预计返校时间：</p>
+             <input v-model = "message6" placeholder= "">
+             <div>
+                 <p></p>
+             </div>
+           
+            </div>
+            <div id = 'agree'>
+             <p>
+                 是否同意学生申请病假：
+             </p>
+             <input type = "radio" id = "是" value = "是" v-model = "picked">
+             <label for = "是">是</label>
+             <input type = "radio" id = "否" value = "否" v-model = "picked">
+             <label for = "否">否</label>
+            </div>
+            
+           
+          </div>
+          </form>
+          </div>
+          <script>
+          
+          new Vue({
+          el: '#app',
+          data: {
+           message:'',
+           message2:''
+          }
+          })
+          
+          new Vue({
+          el: '#ap',
+          data: {
+            picked : '男'
+          }
+          })
+          new Vue({
+            el:'#zhuanye',
+            data:{
+              message3:''
+            }
+          })
+          new Vue({
+            el:'#nianji',
+            data:{
+              picked : '大一'
+            }
+          })
+          new Vue({
+            el:'#reason',
+            data:{
+              message4:''
+            }
+          })
+          new Vue({
+            el:'#time',
+            data:{
+              message5:'',
+              message6:''
+            }
+          })
+          new Vue({
+            el:'#telephone',
+            data:{
+              message7:''
+            }
+          })
+        new Vue({
+            el:'#agree',
+            data:{
+                picked:'是'
+            }
+        })
+          </script>     
+</body>
+</html>
