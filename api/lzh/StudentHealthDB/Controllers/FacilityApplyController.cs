@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using StudentHealthDB.Models;
@@ -123,6 +123,37 @@ namespace StudentHealthDB.Controllers
                         return resp;
                     }
 
+                    // 查询违约记录
+                    cmd = new MySqlCommand("select count(*) from default_record " +
+                            "where applicant_ID=@id;", conn);
+                    cmd.Parameters.AddWithValue("@id", req.id);
+                    mdr = cmd.ExecuteReader();
+                    mdr.Read();
+                    int count = Convert.ToInt32(mdr.GetValue(0));
+                    mdr.Close();
+                    if(count!=0 && count%3 == 0)//若违约次数为3的整数倍，检查是否在最近一周违约
+                    {
+                        cmd = new MySqlCommand("select date from default_record " +
+                            "where applicant_ID=@id and count=@count;", conn);
+                        cmd.Parameters.AddWithValue("@id", req.id);
+                        cmd.Parameters.AddWithValue("@count", count);
+                        mdr = cmd.ExecuteReader();
+                        mdr.Read();
+                        DateTime lastdate = Convert.ToDateTime(mdr.GetValue(0));
+                        mdr.Close();
+                        DateTime current = DateTime.Now;
+                        TimeSpan ts1 = new TimeSpan(lastdate.Ticks);
+                        TimeSpan ts2 = new TimeSpan(current.Ticks);
+                        TimeSpan ts = ts1.Subtract(ts2).Duration();
+                        int days = Convert.ToInt32(ts.Days.ToString());
+                        if(days<7)//最后一次违约记录在7天以内
+                        {
+                            conn.Close();
+                            resp.result = "unqualified";
+                            return resp;
+                        }
+                    }
+
                     string date = req.date.ToString("yyyy-MM-dd");
                     //检查同一申请人申请时间段是否已有其他申请
                     cmd = new MySqlCommand("select applicant_ID from application " +
@@ -175,7 +206,8 @@ namespace StudentHealthDB.Controllers
                     }
 
                     //所有条件符合，插入记录
-                    cmd = new MySqlCommand("insert into application values(@id,@facility,@date,@start,@end);", conn);
+                    cmd = new MySqlCommand("insert into application (applicant_ID,facility_ID,date,start_time,end_time)" +
+                        "values(@id,@facility,@date,@start,@end);", conn);
                     cmd.Parameters.AddWithValue("@id", req.id);
                     cmd.Parameters.AddWithValue("@facility", req.facility);
                     cmd.Parameters.AddWithValue("@date", date);
