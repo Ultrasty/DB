@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using StudentHealthDB.Models;
@@ -127,7 +127,7 @@ namespace StudentHealthDB.Controllers
                     //检查同一申请人申请时间段是否已有其他申请
                     cmd = new MySqlCommand("select applicant_ID from application " +
                             "where applicant_ID=@id and date=@date and " +
-                            "(start_time>=@start and start_time<=@end or end_time<=@end and end_time>=@start);", conn);
+                            "((start_time>=@start and start_time<@end) or (end_time<=@end and end_time>@start));", conn);
                     cmd.Parameters.AddWithValue("@id", req.id );
                     cmd.Parameters.AddWithValue("@date", date);
                     cmd.Parameters.AddWithValue("@start", req.starttime);
