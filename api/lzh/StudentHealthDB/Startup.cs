@@ -10,6 +10,8 @@ namespace StudentHealthDB
 {
     public class Startup
     {
+
+        private readonly string Any = "Any";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,11 +35,21 @@ namespace StudentHealthDB
                 // 如字段为null值，该字段不会返回到前端
                 // options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
+            services.AddCors(m => m.AddPolicy(Any, a => a.SetIsOriginAllowed(_ => true).AllowAnyMethod().AllowAnyHeader().AllowCredentials()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //允许跨源访问
+            /*app.UseCors(options =>
+            {
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+                options.AllowAnyOrigin();
+                options.AllowCredentials();
+            });*/
+            app.UseCors(Any);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
