@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 面包屑导航区 -->
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>功能2</el-breadcrumb-item>
+      <el-breadcrumb-item>查询</el-breadcrumb-item>
+    </el-breadcrumb>
+    <el-card>
+      <!-- 标签页 -->
+      <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
+        <!-- 交通工具查询 -->
+        <el-tab-pane label="交通工具查询" name="first">
+          <el-row :gutter="20">
+            <el-col :span="4">
+              <!-- 查询条件 -->
+              <el-input v-model="vehicle" placeholder="输入班次" clearable>
+                <el-button slot="append" icon="el-icon-search" @click="searchBtn"></el-button>
+              </el-input>
+            </el-col>
+          </el-row>
+          <!-- 表格区 -->
+          <el-table :data="vehicleTableData" stripe style="width: 100%">
+            <el-table-column label="学号" prop="stu_id"></el-table-column>
+            <el-table-column label="姓名" prop="stu_name"></el-table-column>
+            <el-table-column label="车号" prop="date"></el-table-column>
+            <el-table-column label="日期" prop="trip_num"></el-table-column>
+          </el-table>
+        </el-tab-pane>
+        <!-- 打卡查询 -->
+        <el-tab-pane label="打卡查询" name="second">
+          <el-row :gutter="20">
+            <el-col :span="24" style="text-align: center;">
+              <!-- 查询条件 -->
+              <el-date-picker v-model="searchDate" type="date" placeholder="选择日期">
+              </el-date-picker>
+            </el-col>
+          </el-row>
+          <!-- 表格区 -->
+          <el-table :data="signinTableData" stripe style="width: 100%">
+            <el-table-column label="学号" prop="stu_id"></el-table-column>
+            <el-table-column label="姓名" prop="stu_name"></el-table-column>
+            <el-table-column label="省" prop="place_pro"></el-table-column>
+            <el-table-column label="市" prop="place_city"></el-table-column>
+            <el-table-column label="次数" prop="times"></el-table-column>
+            <el-table-column label="联系学生">
+              <template v-slot="scope">
+                <el-button type="primary" icon="el-icon-phone" @click="callStudent(scope.row)">
+                </el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-tab-pane>
+        <!-- 设施信息 -->
+        <el-tab-pane label="修改设施信息" name="third">
+          <el-select v-model="Sfacility" placeholder="请选择" @change="searchFacilityID">
+            <el-option v-for="item in facility" :label="item" :value="item">
+            </el-option>
+          </el-select>
+          <el-button type="primary" icon="el-icon-edit" circle @click="editFShow=true"></el-button>
+        </el-tab-pane>
+      </el-tabs>
+    </el-card>
+
+    <!-- 编辑设施对话框 -->
+    <el-dialog :title="'设施名称:'+Sfacility" :visible.sync="editFShow" width="30%">
+      <el-form label-position="left" label-width="130px" :model="formFacility" :rules="rules" ref="formFacility">
+        <el-form-item label="设施id" prop="facility">
+          <el-input v-model="formFacility.facility" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="设施名称" prop="name">
+          <el-input v-model="formFacility.name" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="每周起始开放日" prop="startdate">
+          <el-input v-model.number="formFacility.startdate"></el-input>
+        </el-form-item>
+        <el-form-item label="每周最终开放日" prop="enddate">
+          <el-input v-model.number="formFacility.enddate"></el-input>
+        </el-form-item>
+        <el-form-item label="每天开放时间" prop="starttime">
+          <el-input v-model.number="formFacility.starttime"></el-input>
+        </el-form-item>
+        <el-form-item label="每天关闭时间" prop="endtime">
+          <el-input v-model.number="formFacility.endtime"></el-input>
+        </el-form-item>
+        <el-form-item label="设施容量" prop="capacity">
+          <el-input v-model.number="formFacility.capacity"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="editFacility('formFacility')">确 定</el-button>
+          <el-button @click="resetForm('formFacility')">重 置</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+  </div>
+
+  <script src="./lib/vue.js"></script>
+  <script src="lib/axios.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        //Tabs 选择
+        activeName: 'first',
+        // 交通工具查询条件
+        vehicle: '',
+        // 交通工具表格信息
+        vehicleTableData: [],
+        // 查询打卡日期
+        searchDate: '',
+        // 签到数据
+        signinTableData: [],
+        // 设施信息表
+        facility: ['图书馆', '体育馆'],
+        Sfacility: '',
+        facilityID: {},
+        // 编辑设备对话框
+        editFShow: false,
+        // 编辑设施表单
+        formFacility: {},
+        // 设施表单验证
+        rules: {
+          facility: [
+            { required: true, message: '没有此id', trigger: 'blur' },
+          ],
+          startdate: [
+            { type: 'number', required: true, message: '请输入数字', trigger: 'change' },
+          ],
+          enddate: [
+            { type: 'number', required: true, message: '请输入数字', trigger: 'change' },
+          ],
+          starttime: [
+            { type: 'number', required: true, message: '请输入数字', trigger: 'change' },
+          ],
+          endtime: [
+            { type: 'number', required: true, message: '请输入数字', trigger: 'change' },
+          ],
+          capacity: [
+            { type: 'number', required: true, message: '请输入数字', trigger: 'change' },
+          ],
+        },
+      },
+      watch: {
+        searchDate() {
+          this.searchSignin()
+        }
+      },
+      methods: {
+        // 每次切换标签页发送请求
+        handleClick(tab) {
+          if (tab.name == "first") {
+            this.searchBtn()
+          } else if (tab.name == "second") {
+            this.searchSignin()
+          }
+        },
+        // 交通工具查询按钮
+        async searchBtn() {
+          let obj = {
+            "trip_num": this.vehicle
+          }
+          // 同步化 axios
+          try {
+            let res = await axios.post('http://49.234.96.221:82/api/22', obj)
+            this.vehicleTableData = res.data
+            this.$message.success('获取成功!')
+          } catch (err) {
+            this.$message.error('系统错误!')
+          }
+        },
+        // 打卡查询
+        async searchSignin() {
+          // 同步化 axios
+          let obj = {
+          }
+          try {
+            let res = await axios.post('http://49.234.96.221:82/api/23', {
+              trip_num: this.vehicle
+            })
+            this.signinTableData = res.data
+            this.$message.success('获取成功!')
+          } catch (err) {
+            this.$message.error('系统错误!')
+          }
+        },
+        // 联系学生
+        async callStudent(row) {
+          alert('联系学生: ' + row.stu_name + " 学号: " + row.stu_id + ' 成功!')
+          // 同步化 axios
+          // try {
+          //   let res = await axios.post('http://49.234.96.221:82/api/22', {
+          // 我的想法是空查询服务器返回默认数据
+          //     date:row.stu_id
+          //   })
+          //   this.vehicleTableData = res.data
+          //   this.$message.success('获取成功!')
+          // } catch (err) {
+          //   this.$message.error('系统错误!')
+          // }
+        },
+        // 获取设施信息
+        async searchFacilityID() {
+          // 同步化 axios
+          try {
+            let res = await axios.post('http://121.199.77.139:8090/facility/id', {
+              name: this.Sfacility
+            })
+            if (res.data.result == "success") {
+              this.facilityID = res.data
+              this.formFacility.facility = res.data.id
+              this.formFacility.name = this.Sfacility
+              return this.$message.success('获取成功!')
+            }
+
+            this.facilityID = {}
+            this.formFacility = {}
+            return this.$message.error('查无此信息!')
+          } catch (err) {
+            this.$message.error('系统错误!')
+          }
+        },
+        // 修改设施信息
+        editFacility(formName) {
+          this.$refs[formName].validate(async (valid) => {
+            if (valid) {
+              // 同步化 axios
+              try {
+                let res = await axios.post('http://121.199.77.139:8090/facility/alter', {
+                  //  请求参数
+                  date: this.formFacility
+                })
+                if (res.data.result == "success") {
+                  return this.$message.success('修改成功!')
+                }
+                return this.$message.error('修改失败!')
+              } catch (err) {
+                return this.$message.error('系统错误!')
+              }
+            } else {
+              return this.$message.info('请完整填写!')
+            }
+          });
+
+        },
+        // 重置表单
+        resetForm(formName) {
+          this.$refs[formName].resetFields();
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

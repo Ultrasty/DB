@@ -2,11 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>学生健康信息数据库</title>
-    <!--
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学生健康信息数据库</title>
+  <!--
     <script type="text/javascript" async="" src="index_files/recaptcha__zh_cn.js"></script>
     <script type="text/javascript" async="" src="index_files/analytics.js"></script>
     <script async="" src="index_files/gtm.js"></script>
@@ -16,8 +16,8 @@
             value: "https:\/\/s.pximg.net\/accounts\/assets\/"
         })
     </script>-->
-    <link rel="stylesheet" href="pages/login/index_files/bundle.ed9d4c7fda9f679351ec.css">
-    <!--<script src="index_files/runtime.f04693da1909ff0170a5.js" charset="utf8" crossorigin="anonymous" defer=""></script>
+  <link rel="stylesheet" href="pages/login/index_files/bundle.ed9d4c7fda9f679351ec.css">
+  <!--<script src="index_files/runtime.f04693da1909ff0170a5.js" charset="utf8" crossorigin="anonymous" defer=""></script>
     <script src="index_files/bundle.b7e5fc21d02e8edc25b3.js" charset="utf8" crossorigin="anonymous" defer=""></script>
     <script src="index_files/commons.e1ec455e047326d99de8.js" charset="utf8" crossorigin="anonymous" defer=""></script>
     <script src="index_files/initializer.2ec269ef763a7ede97fc.js" charset="utf8" crossorigin="anonymous" defer="">
@@ -29,439 +29,441 @@
     <script src="index_files/signup.f15e90520add6e3771c8s.js" charset="utf8" crossorigin="anonymous" defer=""></script>
     <script src="index_files/login.fa4ea2a1b0f139f57cd8.js" charset="utf8" crossorigin="anonymous" defer=""></script>
     <script src="index_files/bundle.js"></script>-->
-    <style type="text/css">
-        #background-slideshow .slide {
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            z-index: -1;
-            position: fixed
-        }
-
-        #background-slideshow .wallpaper {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position-x: 50%;
-            background-position-y: 0;
-            opacity: 1;
-            -webkit-transition-property: opacity;
-            transition-property: opacity;
-            -webkit-transition-duration: 1s;
-            transition-duration: 1s;
-            -webkit-transition-timing-function: ease;
-            transition-timing-function: ease
-        }
-
-        #background-slideshow .wallpaper.fadeout {
-            opacity: 0
-        }
-
-        #background-slideshow .user-info {
-            display: block;
-            position: fixed;
-            width: 200px;
-            height: 50px;
-            bottom: 38px;
-            right: 8px;
-            font-family: HiraginoSans-W3, Hiragino Kaku Gothic Pro, \\30E1\30A4\30EA\30AA, Meiryo, Verdana, sans-serif;
-            border-radius: 4px;
-            background-color: rgba(23, 24, 25, .3);
-            color: #fff
-        }
-
-        #background-slideshow .user-info a:active,
-        #background-slideshow .user-info a:hover,
-        #background-slideshow .user-info a:link,
-        #background-slideshow .user-info a:visited {
-            text-decoration: none;
-            color: #fff
-        }
-
-        #background-slideshow .user-info .user-icon {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-top: 5px;
-            margin-left: 10px
-        }
-
-        #background-slideshow .user-info .description {
-            display: inline-block;
-            margin-top: 8px;
-            margin-left: 8px;
-            vertical-align: top;
-            width: 132px
-        }
-
-        #background-slideshow .user-info .description .illust-title {
-            display: block;
-            font-size: 12px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap
-        }
-
-        #background-slideshow .user-info .description .user-name {
-            display: block;
-            font-size: 10px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap
-        }
-    </style>
-    <!--<script charset="utf-8" src="index_files/lang.zh.a0eaf08d5149e5be83a5.js" crossorigin="anonymous"></script>-->
-    <style data-styled="active" data-styled-version="5.1.1"></style>
-    <style type="text/css">
-        button.btn[data-v-cef78672] {
-            display: inline-block;
-            font-weight: 300;
-            line-height: 1.25;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: middle;
-            user-select: none;
-            border: 1px solid transparent;
-            cursor: pointer;
-            letter-spacing: 1px;
-            transition: all .15s ease
-        }
-
-        button.btn.btn-sm[data-v-cef78672] {
-            padding: .4rem .8rem;
-            font-size: .8rem;
-            border-radius: .2rem
-        }
-
-        button.btn.btn-primary[data-v-cef78672] {
-            color: #fff;
-            background-color: #45C8F1;
-            border-color: #45C8F1
-        }
-
-        button.btn.btn-outline-primary[data-v-cef78672] {
-            color: #45C8F1;
-            background-color: transparent;
-            border-color: #45C8F1
-        }
-
-        button.btn.btn-danger[data-v-cef78672] {
-            color: #fff;
-            background-color: #FF4949;
-            border-color: #FF4949
-        }
-
-        .text-muted[data-v-cef78672] {
-            color: #8492A6
-        }
-
-        .text-center[data-v-cef78672] {
-            text-align: center
-        }
-
-        .drop-down-enter[data-v-cef78672],
-        .drop-down-leave-to[data-v-cef78672] {
-            transform: translateX(0) translateY(-20px);
-            transition-timing-function: cubic-bezier(0.74, 0.04, 0.26, 1.05);
-            opacity: 0
-        }
-
-        .drop-down-enter-active[data-v-cef78672],
-        .drop-down-leave-active[data-v-cef78672] {
-            transition: all .15s
-        }
-
-        .move-left-enter[data-v-cef78672],
-        .move-left-leave-to[data-v-cef78672] {
-            transform: translateY(0) translateX(-80px);
-            transition-timing-function: cubic-bezier(0.74, 0.04, 0.26, 1.05);
-            opacity: 0
-        }
-
-        .move-left-enter-active[data-v-cef78672],
-        .move-left-leave-active[data-v-cef78672] {
-            transition: all .15s
-        }
-
-        .shake[data-v-cef78672] {
-            animation: shake-data-v-cef78672 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-            transform: translate3d(0, 0, 0)
-        }
-
-        @keyframes shake-data-v-cef78672 {
-
-            10%,
-            90% {
-                transform: translate3d(-1px, 0, 0)
-            }
-
-            20%,
-            80% {
-                transform: translate3d(2px, 0, 0)
-            }
-
-            30%,
-            50%,
-            70% {
-                transform: translate3d(-4px, 0, 0)
-            }
-
-            40%,
-            60% {
-                transform: translate3d(4px, 0, 0)
-            }
-        }
-
-        .pulse[data-v-cef78672] {
-            animation: pulse-data-v-cef78672 2s ease infinite
-        }
-
-        @keyframes pulse-data-v-cef78672 {
-            0% {
-                opacity: .7
-            }
-
-            50% {
-                opacity: .4
-            }
-
-            100% {
-                opacity: .7
-            }
-        }
-
-        .flash-once[data-v-cef78672] {
-            animation: flash-once 3.5s ease 1
-        }
-
-        @keyframes fade-up-data-v-cef78672 {
-            0% {
-                transform: translate3d(0, 10px, 0);
-                opacity: 0
-            }
-
-            100% {
-                transform: translate3d(0, 0, 0);
-                opacity: 1
-            }
-        }
-
-        .fade-in[data-v-cef78672] {
-            animation: fade-in-data-v-cef78672 .3s ease-in-out
-        }
-
-        @keyframes fade-in-data-v-cef78672 {
-            0% {
-                opacity: 0
-            }
-
-            100% {
-                opacity: 1
-            }
-        }
-
-        .spin[data-v-cef78672] {
-            animation-name: spin-data-v-cef78672;
-            animation-duration: 2000ms;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear
-        }
-
-        @keyframes spin-data-v-cef78672 {
-            from {
-                transform: rotate(0deg)
-            }
-
-            to {
-                transform: rotate(360deg)
-            }
-        }
-
-        .bounceIn[data-v-cef78672] {
-            animation-name: bounceIn-data-v-cef78672;
-            transform-origin: center bottom;
-            animation-duration: 1s;
-            animation-fill-mode: both;
-            animation-iteration-count: 1
-        }
-
-        @keyframes bounceIn-data-v-cef78672 {
-
-            0%,
-            20%,
-            40%,
-            60%,
-            80%,
-            100% {
-                -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-                transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
-            }
-
-            0% {
-                opacity: 1;
-                -webkit-transform: scale3d(0.8, 0.8, 0.8);
-                transform: scale3d(0.8, 0.8, 0.8)
-            }
-
-            20% {
-                -webkit-transform: scale3d(1.1, 1.1, 1.1);
-                transform: scale3d(1.1, 1.1, 1.1)
-            }
-
-            40% {
-                -webkit-transform: scale3d(0.9, 0.9, 0.9);
-                transform: scale3d(0.9, 0.9, 0.9)
-            }
-
-            60% {
-                opacity: 1;
-                -webkit-transform: scale3d(1.03, 1.03, 1.03);
-                transform: scale3d(1.03, 1.03, 1.03)
-            }
-
-            80% {
-                -webkit-transform: scale3d(0.97, 0.97, 0.97);
-                transform: scale3d(0.97, 0.97, 0.97)
-            }
-
-            100% {
-                opacity: 1;
-                -webkit-transform: scale3d(1, 1, 1);
-                transform: scale3d(1, 1, 1)
-            }
-        }
-
-        @keyframes dots-data-v-cef78672 {
-
-            0%,
-            20% {
-                color: rgba(0, 0, 0, 0);
-                text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0)
-            }
-
-            40% {
-                color: #8492A6;
-                text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0)
-            }
-
-            60% {
-                text-shadow: 0.25em 0 0 #8492A6, 0.5em 0 0 rgba(0, 0, 0, 0)
-            }
-
-            80%,
-            100% {
-                text-shadow: .25em 0 0 #8492A6, .5em 0 0 #8492A6
-            }
-        }
-
-        @keyframes recording-data-v-cef78672 {
-            0% {
-                box-shadow: 0px 0px 5px 0px rgba(173, 0, 0, 0.3)
-            }
-
-            65% {
-                box-shadow: 0px 0px 5px 5px rgba(173, 0, 0, 0.3)
-            }
-
-            90% {
-                box-shadow: 0px 0px 5px 5px rgba(173, 0, 0, 0)
-            }
-        }
-
-        html[data-v-cef78672] {
-            max-height: 500px
-        }
-
-        body[data-v-cef78672] {
-            margin: 0;
-            font-size: 100%;
-            color: #3C4858;
-            width: 350px;
-            max-height: 500px
-        }
-
-        a[data-v-cef78672] {
-            text-decoration: none;
-            color: #45C8F1
-        }
-
-        h1[data-v-cef78672],
-        h2[data-v-cef78672],
-        h3[data-v-cef78672],
-        h4[data-v-cef78672] {
-            margin-top: 0
-        }
-
-        .container_selected_area[data-v-cef78672] {
-            padding: 0px;
-            position: fixed;
-            z-index: 1000000;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
-            display: none;
-            visibility: hidden
-        }
-
-        .container_selected_area.active[data-v-cef78672] {
-            visibility: visible;
-            display: block
-        }
-
-        .container_selected_area .label[data-v-cef78672] {
-            font-family: "Didact Gothic Regular", sans-serif;
-            font-size: 22px;
-            text-align: center;
-            padding-top: 15px
-        }
-
-        .container_selected_area .area[data-v-cef78672] {
-            border: 1px solid #1e83ff;
-            background: rgba(30, 131, 255, 0.1);
-            display: none;
-            position: fixed;
-            z-index: 1000000;
-            box-sizing: border-box
-        }
-
-        .container_selected_area .area.active[data-v-cef78672] {
-            display: block;
-            top: 0px;
-            left: 0px
-        }
-
-        .hide[data-v-cef78672] {
-            display: none
-        }
-
-        .flip-list-enter-active, .flip-list-leave-active {
-            transition: all 1s;
-        }
-
-        .flip-list-enter, .flip-list-leave-active {
-            opacity: 0;
-        }
-
-        #wallpaper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        ul, ol {
-            list-style: none;
-        }
-
-    </style>
+  <style type="text/css">
+    #background-slideshow .slide {
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+      position: fixed
+    }
+
+    #background-slideshow .wallpaper {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position-x: 50%;
+      background-position-y: 0;
+      opacity: 1;
+      -webkit-transition-property: opacity;
+      transition-property: opacity;
+      -webkit-transition-duration: 1s;
+      transition-duration: 1s;
+      -webkit-transition-timing-function: ease;
+      transition-timing-function: ease
+    }
+
+    #background-slideshow .wallpaper.fadeout {
+      opacity: 0
+    }
+
+    #background-slideshow .user-info {
+      display: block;
+      position: fixed;
+      width: 200px;
+      height: 50px;
+      bottom: 38px;
+      right: 8px;
+      font-family: HiraginoSans-W3, Hiragino Kaku Gothic Pro, \\30E1\30A4\30EA\30AA, Meiryo, Verdana, sans-serif;
+      border-radius: 4px;
+      background-color: rgba(23, 24, 25, .3);
+      color: #fff
+    }
+
+    #background-slideshow .user-info a:active,
+    #background-slideshow .user-info a:hover,
+    #background-slideshow .user-info a:link,
+    #background-slideshow .user-info a:visited {
+      text-decoration: none;
+      color: #fff
+    }
+
+    #background-slideshow .user-info .user-icon {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-top: 5px;
+      margin-left: 10px
+    }
+
+    #background-slideshow .user-info .description {
+      display: inline-block;
+      margin-top: 8px;
+      margin-left: 8px;
+      vertical-align: top;
+      width: 132px
+    }
+
+    #background-slideshow .user-info .description .illust-title {
+      display: block;
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    #background-slideshow .user-info .description .user-name {
+      display: block;
+      font-size: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+  </style>
+  <!--<script charset="utf-8" src="index_files/lang.zh.a0eaf08d5149e5be83a5.js" crossorigin="anonymous"></script>-->
+  <style data-styled="active" data-styled-version="5.1.1"></style>
+  <style type="text/css">
+    button.btn[data-v-cef78672] {
+      display: inline-block;
+      font-weight: 300;
+      line-height: 1.25;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      user-select: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: all .15s ease
+    }
+
+    button.btn.btn-sm[data-v-cef78672] {
+      padding: .4rem .8rem;
+      font-size: .8rem;
+      border-radius: .2rem
+    }
+
+    button.btn.btn-primary[data-v-cef78672] {
+      color: #fff;
+      background-color: #45C8F1;
+      border-color: #45C8F1
+    }
+
+    button.btn.btn-outline-primary[data-v-cef78672] {
+      color: #45C8F1;
+      background-color: transparent;
+      border-color: #45C8F1
+    }
+
+    button.btn.btn-danger[data-v-cef78672] {
+      color: #fff;
+      background-color: #FF4949;
+      border-color: #FF4949
+    }
+
+    .text-muted[data-v-cef78672] {
+      color: #8492A6
+    }
+
+    .text-center[data-v-cef78672] {
+      text-align: center
+    }
+
+    .drop-down-enter[data-v-cef78672],
+    .drop-down-leave-to[data-v-cef78672] {
+      transform: translateX(0) translateY(-20px);
+      transition-timing-function: cubic-bezier(0.74, 0.04, 0.26, 1.05);
+      opacity: 0
+    }
+
+    .drop-down-enter-active[data-v-cef78672],
+    .drop-down-leave-active[data-v-cef78672] {
+      transition: all .15s
+    }
+
+    .move-left-enter[data-v-cef78672],
+    .move-left-leave-to[data-v-cef78672] {
+      transform: translateY(0) translateX(-80px);
+      transition-timing-function: cubic-bezier(0.74, 0.04, 0.26, 1.05);
+      opacity: 0
+    }
+
+    .move-left-enter-active[data-v-cef78672],
+    .move-left-leave-active[data-v-cef78672] {
+      transition: all .15s
+    }
+
+    .shake[data-v-cef78672] {
+      animation: shake-data-v-cef78672 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      transform: translate3d(0, 0, 0)
+    }
+
+    @keyframes shake-data-v-cef78672 {
+
+      10%,
+      90% {
+        transform: translate3d(-1px, 0, 0)
+      }
+
+      20%,
+      80% {
+        transform: translate3d(2px, 0, 0)
+      }
+
+      30%,
+      50%,
+      70% {
+        transform: translate3d(-4px, 0, 0)
+      }
+
+      40%,
+      60% {
+        transform: translate3d(4px, 0, 0)
+      }
+    }
+
+    .pulse[data-v-cef78672] {
+      animation: pulse-data-v-cef78672 2s ease infinite
+    }
+
+    @keyframes pulse-data-v-cef78672 {
+      0% {
+        opacity: .7
+      }
+
+      50% {
+        opacity: .4
+      }
+
+      100% {
+        opacity: .7
+      }
+    }
+
+    .flash-once[data-v-cef78672] {
+      animation: flash-once 3.5s ease 1
+    }
+
+    @keyframes fade-up-data-v-cef78672 {
+      0% {
+        transform: translate3d(0, 10px, 0);
+        opacity: 0
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+      }
+    }
+
+    .fade-in[data-v-cef78672] {
+      animation: fade-in-data-v-cef78672 .3s ease-in-out
+    }
+
+    @keyframes fade-in-data-v-cef78672 {
+      0% {
+        opacity: 0
+      }
+
+      100% {
+        opacity: 1
+      }
+    }
+
+    .spin[data-v-cef78672] {
+      animation-name: spin-data-v-cef78672;
+      animation-duration: 2000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear
+    }
+
+    @keyframes spin-data-v-cef78672 {
+      from {
+        transform: rotate(0deg)
+      }
+
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .bounceIn[data-v-cef78672] {
+      animation-name: bounceIn-data-v-cef78672;
+      transform-origin: center bottom;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      animation-iteration-count: 1
+    }
+
+    @keyframes bounceIn-data-v-cef78672 {
+
+      0%,
+      20%,
+      40%,
+      60%,
+      80%,
+      100% {
+        -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+      }
+
+      0% {
+        opacity: 1;
+        -webkit-transform: scale3d(0.8, 0.8, 0.8);
+        transform: scale3d(0.8, 0.8, 0.8)
+      }
+
+      20% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1)
+      }
+
+      40% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9);
+        transform: scale3d(0.9, 0.9, 0.9)
+      }
+
+      60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03)
+      }
+
+      80% {
+        -webkit-transform: scale3d(0.97, 0.97, 0.97);
+        transform: scale3d(0.97, 0.97, 0.97)
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1)
+      }
+    }
+
+    @keyframes dots-data-v-cef78672 {
+
+      0%,
+      20% {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0)
+      }
+
+      40% {
+        color: #8492A6;
+        text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0)
+      }
+
+      60% {
+        text-shadow: 0.25em 0 0 #8492A6, 0.5em 0 0 rgba(0, 0, 0, 0)
+      }
+
+      80%,
+      100% {
+        text-shadow: .25em 0 0 #8492A6, .5em 0 0 #8492A6
+      }
+    }
+
+    @keyframes recording-data-v-cef78672 {
+      0% {
+        box-shadow: 0px 0px 5px 0px rgba(173, 0, 0, 0.3)
+      }
+
+      65% {
+        box-shadow: 0px 0px 5px 5px rgba(173, 0, 0, 0.3)
+      }
+
+      90% {
+        box-shadow: 0px 0px 5px 5px rgba(173, 0, 0, 0)
+      }
+    }
+
+    html[data-v-cef78672] {
+      max-height: 500px
+    }
+
+    body[data-v-cef78672] {
+      margin: 0;
+      font-size: 100%;
+      color: #3C4858;
+      width: 350px;
+      max-height: 500px
+    }
+
+    a[data-v-cef78672] {
+      text-decoration: none;
+      color: #45C8F1
+    }
+
+    h1[data-v-cef78672],
+    h2[data-v-cef78672],
+    h3[data-v-cef78672],
+    h4[data-v-cef78672] {
+      margin-top: 0
+    }
+
+    .container_selected_area[data-v-cef78672] {
+      padding: 0px;
+      position: fixed;
+      z-index: 1000000;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      display: none;
+      visibility: hidden
+    }
+
+    .container_selected_area.active[data-v-cef78672] {
+      visibility: visible;
+      display: block
+    }
+
+    .container_selected_area .label[data-v-cef78672] {
+      font-family: "Didact Gothic Regular", sans-serif;
+      font-size: 22px;
+      text-align: center;
+      padding-top: 15px
+    }
+
+    .container_selected_area .area[data-v-cef78672] {
+      border: 1px solid #1e83ff;
+      background: rgba(30, 131, 255, 0.1);
+      display: none;
+      position: fixed;
+      z-index: 1000000;
+      box-sizing: border-box
+    }
+
+    .container_selected_area .area.active[data-v-cef78672] {
+      display: block;
+      top: 0px;
+      left: 0px
+    }
+
+    .hide[data-v-cef78672] {
+      display: none
+    }
+
+    .flip-list-enter-active,
+    .flip-list-leave-active {
+      transition: all 1s;
+    }
+
+    .flip-list-enter,
+    .flip-list-leave-active {
+      opacity: 0;
+    }
+
+    #wallpaper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    ul,
+    ol {
+      list-style: none;
+    }
+  </style>
 </head>
 
 <body>
-<div id="app">
+  <div id="app">
     <!--
     <div id="background-slideshow">
         <div class=" slide">
@@ -473,104 +475,102 @@
     </div>
     -->
     <transition-group name="flip-list" tag="ul">
-        <li v-for="curImg in currImgs" v-bind:key="curImg" class="list-item" id="wallpaper" style="z-index:-10;">
-            <img :src="curImg" style="width: 100vw;height:50vw;">
-        </li>
+      <li v-for="curImg in currImgs" v-bind:key="curImg" class="list-item" id="wallpaper" style="z-index:-10;">
+        <img :src="curImg" style="width: 100vw;height:50vw;">
+      </li>
     </transition-group>
 
     <div class="signup-form" style="margin-top: 70px">
-        <div class="signup-form__logo-box">
-            <div class="signup-form__logo"></div>
-            <div class="signup-form__catchphrase">学生健康信息数据库</div>
-        </div>
+      <div class="signup-form__logo-box">
+        <div class="signup-form__logo"></div>
+        <div class="signup-form__catchphrase">学生健康信息数据库</div>
+      </div>
 
-        <div id="container-login2">
-            <div id="LoginComponent2">
-                <div>
-                    <div class="input-field-group">
-                        <div class="input-field"><input type="text" autocomplete="username"
-                                                        placeholder="学号" autocapitalize="off" v-model="student_number">
-                        </div>
-                        <div class="input-field"><input type="password" autocomplete="current-password"
-                                                        placeholder="密码" autocapitalize="off" v-model="password"></div>
-                    </div>
-                    <ul class="uuvlpj-0 jpfKJC"></ul>
-                    <button type="submit" class="signup-form__submit" @click="login">登录</button>
-                    <div class="signup-form-nav"><a href="javascript:void(0)">忘记了密码</a>
-                    </div>
-                </div>
+      <div id="container-login2">
+        <div id="LoginComponent2">
+          <div>
+            <div class="input-field-group">
+              <div class="input-field"><input type="text" autocomplete="username" placeholder="学号" autocapitalize="off"
+                  v-model="student_number">
+              </div>
+              <div class="input-field"><input type="password" autocomplete="current-password" placeholder="密码"
+                  autocapitalize="off" v-model="password"></div>
             </div>
-        </div>
-        <div class="signup-form__sns-btn-area login">
-            <div class="sns-button-list"><a href="javascript:void(0)" class="btn-item btn-weibo ga-event  login"
-                                            data-category="login_page_pc" data-action="sns-login-button-click"
-                                            data-label="sina"
-                                            rel="nofollow">通过统一身份认证登录</a><a href="javascript:void(0)"
-                                                                            class="btn-item btn-gplus ga-event  login"
-                                                                            data-category="login_page_pc"
-                                                                            data-action="sns-login-button-click"
-                                                                            data-label="googleplus" rel="nofollow">通过手机号登录</a>
+            <ul class="uuvlpj-0 jpfKJC"></ul>
+            <button type="submit" class="signup-form__submit" @click="login">登录</button>
+            <div class="signup-form-nav"><a href="javascript:void(0)">忘记了密码</a>
             </div>
+          </div>
         </div>
-        <div class="recaptcha-terms">本站点由软院数据库课设某项目组提供技术支持
+      </div>
+      <div class="signup-form__sns-btn-area login">
+        <div class="sns-button-list"><a href="javascript:void(0)" class="btn-item btn-weibo ga-event  login"
+            data-category="login_page_pc" data-action="sns-login-button-click" data-label="sina"
+            rel="nofollow">通过统一身份认证登录</a><a href="javascript:void(0)" class="btn-item btn-gplus ga-event  login"
+            data-category="login_page_pc" data-action="sns-login-button-click" data-label="googleplus"
+            rel="nofollow">通过手机号登录</a>
         </div>
+      </div>
+      <div class="recaptcha-terms">本站点由软院数据库课设某项目组提供技术支持
+      </div>
 
     </div>
-</div>
+  </div>
 
 
-<script src="pages/lib/vue.js"></script>
-<script src="pages/lib/axios.js"></script>
-<script>
+  <script src="pages/lib/vue.js"></script>
+  <script src="pages/lib/axios.js"></script>
+  <script>
     new Vue({
-        el: '#app',
-        data: {
-            currImgs: [],
-            imgs: ["./pages/login/img/background1.jpg",
-                "./pages/login/img/background2.jpg", "./pages/login/img/background3.jpg",
-                "./pages/login/img/background4.jpg", "./pages/login/img/background5.jpg",
-                "./pages/login/img/background6.jpg", "./pages/login/img/background7.jpg"
-            ],
-            index: 0,
-            student_number: "",
-            password: "",
-            istrue: 1
-        },
-        mounted: function () {
-            this.currImgs = [this.imgs[0]];
-            this.startChange();
-        },
-        methods: {
-            login: function () {
-                let that = this;
-                let url = "http://121.199.77.139:8090/student/login";
-                axios.post(url, {
-                    "id": that.student_number,
-                    "password": that.password
-                }).then(function (response) {
-                    if (response.data.result == "success") {
-                        that.istrue = 1;
-                    } else that.istrue = 0;
+      el: '#app',
+      data: {
+        currImgs: [],
+        imgs: ["./pages/login/img/background1.jpg",
+          "./pages/login/img/background2.jpg", "./pages/login/img/background3.jpg",
+          "./pages/login/img/background4.jpg", "./pages/login/img/background5.jpg",
+          "./pages/login/img/background6.jpg", "./pages/login/img/background7.jpg"
+        ],
+        index: 0,
+        student_number: "",
+        password: "",
+        istrue: 1
+      },
+      mounted: function () {
+        this.currImgs = [this.imgs[0]];
+        this.startChange();
+      },
+      methods: {
+        login: function () {
+          let that = this;
+          let url = "http://121.199.77.139:8090/student/login";
+          axios.post(url, {
+            "id": that.student_number,
+            "password": that.password
+          }).then(function (response) {
+            if (response.data.result == "success") {
+              that.istrue = 1;
+            } else that.istrue = 0;
 
-                }, function (err) {
-                    console.log(err);
-                });
-                if (this.istrue == 1) {
-                    alert("登陆成功");
-                    window.location.href="main.html?" + this.student_number;
-                } else
-                    alert("登录失败");
+          }, function (err) {
+            console.log(err);
+          });
+          if (this.istrue == 1) {
+            alert("登陆成功");
+            window.location.href = "main.html?" + this.student_number;
+          } else
+            alert("登录失败");
 
-            },
-            startChange: function () {
-                var _this = this;
-                setInterval(function () {
-                    _this.index = (_this.index + 1) % _this.imgs.length;
-                    _this.currImgs.splice(0, 1, _this.imgs[_this.index]);
-                }, 3000);
-            }
+        },
+        startChange: function () {
+          var _this = this;
+          setInterval(function () {
+            _this.index = (_this.index + 1) % _this.imgs.length;
+            _this.currImgs.splice(0, 1, _this.imgs[_this.index]);
+          }, 3000);
         }
+      }
     })
-</script>
+  </script>
 </body>
+
 </html>
