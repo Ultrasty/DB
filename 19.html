@@ -151,11 +151,14 @@
                 })
             },
 			submittwo: function () {
+				console.log("123");
                 var url = "http://49.234.96.221:82/api/19";
                 let that = this;
                 axios.get(url).then(function (response) {
-                    that.result = response.result;
+					console.log("123456");
+                    that.result = response.rdata;
                     that.ifshow2=true;
+					console.log(response.data)
                 }, function (err) {
                     console.log(err);
                 })
