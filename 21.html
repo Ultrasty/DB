@@ -125,7 +125,7 @@
             submit: function () {
                 var url = "http://49.234.96.221:82/api/21";
                 let that = this;
-				axios.post(
+				axios.get(
                         url, {
                             "student_ID": this.student_ID
                         }).then(function (response) {

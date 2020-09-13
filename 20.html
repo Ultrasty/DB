@@ -128,14 +128,14 @@
             submit: function () {
                 var url = "http://49.234.96.221:82/api/20";
                 let that = this;
-				axios.post(
-                        url, {
-                            "date": this.date
-                        }).then(function (response) {
-							that.result = response.result;
-							}, function (err) {
-								console.log(err);
-							})
+				axios.get(
+					url, {
+						"date": this.date
+					}).then(function (response) {
+						that.result = response.result;
+						}, function (err) {
+							console.log(err);
+						})
             }
 		}
     })
