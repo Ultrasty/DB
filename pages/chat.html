@@ -100,18 +100,13 @@
                     </button>
                 </div>
             </div>
-            <div class="col-xs-12 person">
+            <div class="col-xs-12 person" v-for="(item,index) in listofstudent_num" @click="changeperson(index)">
                 <div class="form-inline row">
-                    <img class="theprofile" v-bind:src="theprofile">
-                    青袍君
+                    <img class="theprofile" v-bind:src="item">
+                    {{listofstudent_number[index]}} {{listofname[index]}}
                 </div>
             </div>
-            <div class="col-xs-12 person">
-                <div class="form-inline row">
-                    <img class="theprofile" v-bind:src="theprofile">
-                    青袍君
-                </div>
-            </div>
+
 
         </div>
         <div class="col-xs-9 right">
@@ -143,7 +138,9 @@
             thePersonYouTalkTo: "thePersonYouTalkTo~",
             urlOfChatRecord: "chat_record.html",
             theprofile: "",
-            listofstudent_num: []
+            listofstudent_num: [],
+            listofstudent_number:[],
+            listofname:[]
         },
         mounted: function () {
             var urlA = location.search.split('?');
@@ -155,7 +152,11 @@
             axios.get("http://101.132.145.102:5000/api/gettable?table=student").then(
                 function (response) {
                     for (let i = 0; i < response.data.countofrows; i++) {
-                        that.listofstudent_num.push(response.data.tableinformation[i][0]);
+                        that.listofstudent_num.push("Template/images/" + response.data.tableinformation[i][0] + ".jpg");
+                        that.listofname.push(response.data.tableinformation[i][2]);
+                        that.listofstudent_number.push(response.data.tableinformation[i][0]);
+                        that.thePersonYouTalkTo = response.data.tableinformation[0][0];
+                        that.urlOfChatRecord = "chat_record.html?" + that.student_number + "?" + that.thePersonYouTalkTo;
                     }
                     console.log(that.listofstudent_num);
                 }, function (err) {
@@ -163,7 +164,12 @@
                 }
             )
         },
-        methods: {}
+        methods: {
+            changeperson: function (index) {
+                this.thePersonYouTalkTo = this.listofstudent_number[index];
+                this.urlOfChatRecord = "chat_record.html?" + this.student_number + "?" + this.thePersonYouTalkTo;
+            }
+        }
     })
 </script>
 </body>
