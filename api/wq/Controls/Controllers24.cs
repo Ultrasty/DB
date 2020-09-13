@@ -6,8 +6,8 @@ using MySql.Data.MySqlClient;
 namespace database.Controllers
 {
     [ApiController]
-    [Route("24")] 
-    public class get24 : ControllerBase
+    [Route("api/24")] 
+    public class Get24 : ControllerBase
     {
         [HttpGet]
         public LinkedList<return24> getStu24(){
