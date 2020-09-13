@@ -66,7 +66,11 @@
 
         .person {
             height: 70px;
-            background-color: #9d9d9d;
+
+        }
+
+        .person:hover{
+            background-color: #d9d8d8;
         }
 
         .right {
@@ -75,10 +79,11 @@
             padding: 0;
         }
 
-        .theprofile{
+        .theprofile {
             width: 42px;
             height: 42px;
             margin-top: 15px;
+            margin-left: 15px;
         }
 
     </style>
@@ -96,7 +101,16 @@
                 </div>
             </div>
             <div class="col-xs-12 person">
-                <img class="theprofile" v-bind:src="theprofile">
+                <div class="form-inline row">
+                    <img class="theprofile" v-bind:src="theprofile">
+                    青袍君
+                </div>
+            </div>
+            <div class="col-xs-12 person">
+                <div class="form-inline row">
+                    <img class="theprofile" v-bind:src="theprofile">
+                    青袍君
+                </div>
             </div>
 
         </div>
@@ -124,21 +138,19 @@
     var abc = new Vue({
         el: "#chatroom",
         data: {
-            student_number:"",
-            thePersonYouTalkTo:"thePersonYouTalkTo~",
-            urlOfChatRecord:"chat_record.html",
-            theprofile:""
+            student_number: "",
+            thePersonYouTalkTo: "thePersonYouTalkTo~",
+            urlOfChatRecord: "chat_record.html",
+            theprofile: ""
         },
         mounted: function () {
             var urlA = location.search.split('?');
             this.student_number = urlA[1];
             this.urlOfChatRecord = "chat_record.html?" + this.student_number + "?" + this.thePersonYouTalkTo;
-            this.theprofile="template/images/"+this.student_number+".jpg";
+            this.theprofile = "template/images/" + this.student_number + ".jpg";
             //console.log(this.student_number+"from chat");
         },
-        methods: {
-
-        }
+        methods: {}
     })
 </script>
 </body>

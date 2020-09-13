@@ -21,4 +21,11 @@ namespace API1.Models
     {
         public string[] tableinformation;
     }
+
+    public class message
+    {
+        public string sender_id;
+        public string receiver_id;
+        public string content;
+    }
 }

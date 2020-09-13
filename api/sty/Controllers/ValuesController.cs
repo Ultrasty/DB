@@ -156,4 +156,48 @@ namespace API1.Controllers
             return resp;
         }
     }
+
+    [Route("api/sendmessage")]
+    [ApiController]
+    public class Values3Controller : ControllerBase
+    {
+
+        [HttpPost]
+        public string Post([FromBody] message req)
+        {
+            string resp = "";
+            try
+            {
+                //从配置文件中读取字符串
+                Json_File _Json_File = new Json_File();
+                var configuration = _Json_File.Read_Json_File();
+                string connString = configuration["conn"];
+
+                MySqlConnection conn = new MySqlConnection(connString);
+                
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand())//创建查询命令
+                {
+                    string sql = "insert into the_chat_record(sender_id,receiver_id,date,time,content) " +
+                        "values (@sender_id,@receiver_id,@date,@time,@content)";
+
+                    cmd.Connection = conn;
+                    cmd.CommandText = sql;
+                    cmd.Parameters.Add(new MySqlParameter("@sender_id", req.sender_id));
+                    cmd.Parameters.Add(new MySqlParameter("@receiver_id", req.receiver_id));
+                    cmd.Parameters.Add(new MySqlParameter("@content", req.content));
+                    cmd.Parameters.Add(new MySqlParameter("@date", DateTime.Now.ToString("yyyy-MM-dd")));
+                    cmd.Parameters.Add(new MySqlParameter("@time", DateTime.Now.ToLongTimeString().ToString()));
+                    cmd.ExecuteNonQuery();//用来执行sql语句
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return resp;
+        }
+    }
 }
