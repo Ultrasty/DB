@@ -118,16 +118,16 @@
 	var abc = new Vue({
         el: "#app",
         data: {
-			student_ID:"",
+			index:"",
 			result:[]
         },
         methods: {
             submit: function () {
                 var url = "http://49.234.96.221:82/api/21";
                 let that = this;
-				axios.get(
+				axios.post(
                         url, {
-                            "student_ID": this.student_ID
+                            "index": this.student_ID
                         }).then(function (response) {
 							that.result = response.result;
 							}, function (err) {
