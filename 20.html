@@ -126,13 +126,16 @@
         },
         methods: {
             submit: function () {
+				console.log(this.date);
                 var url = "http://49.234.96.221:82/api/20";
                 let that = this;
-				axios.get(
+				axios.post(
 					url, {
 						"date": this.date
 					}).then(function (response) {
+						console.log("123456");
 						that.result = response.result;
+						console.log(response.result)
 						}, function (err) {
 							console.log(err);
 						})
