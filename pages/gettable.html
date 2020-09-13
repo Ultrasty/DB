@@ -87,13 +87,13 @@
         <table class="table table-hover table-striped table-bordered">
             <thead v-if="isshow">
             <tr>
-                <th v-if="isshow">#</th>
+                
                 <th v-for="item in tableheader">{{item}}</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="(x,index) in tablecontent">
-                <th scope="row">{{index}}</th>
+                
                 <td v-for="y in x">{{y}}</td>
             </tr>
             </tbody>
