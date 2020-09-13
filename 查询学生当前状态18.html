@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>学生健康信息数据库</title>
+
+    <meta name="keywords" content="学生健康信息数据库,疫情打卡系统,同济大学,嘉定校区,同济大学嘉定校区,同济大学软件学院,数据库课设,同济大学软件学院数据库课设">
+    <meta name="description" content="学生健康信息数据库/疫情打卡系统是同济大学软件学院数据库课设某项目组的作品">
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/><![endif]-->
+    <!--<link rel="shortcut icon" href="favicon.ico">-->
+    <link href="pages/lib/bootstrap.css" rel="stylesheet">
+    <link href="pages/Template/css/common/font-awesome.css" rel="stylesheet">
+    <link href="pages/Template/css/common/style.css" rel="stylesheet">
+    <script src="pages/lib/vue.js"></script>
+    <script src="pages/lib/jquery.js"></script>
+    <script src="pages/lib/bootstrap.js"></script>
+    <script src="pages/lib/axios.js"></script>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div id="wrapper">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close"><i class="fa fa-times-circle"></i>
+        </div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs" style="font-size:20px;">
+                                        <div style="width:170px;text-align: center">
+                                        <strong class="font-bold"
+                                                style="font-style: italic;">TJ Health Database</strong>
+                                            </div>
+                                    </span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="logo-element">
+                        <div class="logo">
+                            <img class="head" v-bind:src="profile_photo">
+                        </div>
+                        <div class="nick-name">{{student_number}}</div>
+                        <div>{{identity}}</div>
+                    </div>
+                </li>
+                <!--下面这一行如果去掉那侧边栏收起来之后就回不来了-->
+                <a class="navbar-minimalize" href="#"></a>
+                <li>
+                    <a class="J_menuItem" href="pages/gettable.html">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">超级管理员-表查询</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="J_menuItem" v-bind:href="urlofchatroom">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">疫情交流室</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-users"></i>
+                        <span class="nav-label">功能2</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-user-times"></i>
+                        <span class="nav-label">功能3</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-file-o"></i>
+                        <span class="nav-label">功能4</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-files-o"></i>
+                        <span class="nav-label">功能5</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-edit"></i>
+                        <span class="nav-label">功能6</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-rebel"></i>
+                        <span class="nav-label">功</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+    <!--右侧部分开始-->
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top border-bottom" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                        <div class="form-group">
+                            <span class="form-control" style="width: 400px">欢迎使用学生健康信息数据库！</span>
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <img src="pages/Template/images/rabbit.jpg" style="width: 24px;height: 24px;" class="head"> <span style="font-size: 12px;">{{theusername}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="navbar navbar-static-top" style="min-height: 30px; line-height: 30px;">
+                <div class="navbar-header" style="padding-left: 20px;">数据库管理</div>
+            </nav>
+        </div>
+        <form>
+            <div style="text-align:center;">
+                <h1>学生状态当前功能状态查询</h1>
+            </div>
+            <div style="text-align-last: center;">
+                <h3>请输入您要查询学生的姓名和学号！</h3>
+                <div id="basic">
+                    <p>姓名：</p>
+                    <input v-model="message1" placeholder="（输入6个9查询全部）">
+                    <p>学号：</p>
+                    <input v-model="message2" placeholder="（输入6个9查询全部）">
+                </div>
+                <br>
+                <input type = "submit" value ="提交" >
+            </div>
+        </form>
+    </div>
+    <script>
+
+        new Vue({
+            el: '#basic',
+            data: {
+                message1:'例如：',
+                message2:'例如：'
+            }
+        })
+        new Vue({
+            el:'#health',
+            data:{
+                picked : '大一'
+            }
+        })
+
+        new Vue({
+            el:'#location',
+            data:{
+                message4:''
+            }
+        })
+
+    </script>
+</div>
+ </div>
+    <!--右侧部分结束-->
+</div>
+
+<!-- 全局js -->
+<script src="pages/lib/jquery.js"></script>
+<script src="pages/lib/bootstrap.js"></script>
+<script src="pages/Template/lib/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="pages/Template/lib/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="pages/Template/lib/plugins/layer/layer.min.js"></script>
+
+<!-- 自定义js -->
+<script src="pages/Template/js/main.js"></script>
+<script type="text/javascript" src="pages/Template/js/index.js"></script>
+
+<!-- 第三方插件 -->
+<script src="pages/Template/lib/plugins/pace/pace.min.js"></script>
+<script src="pages/Template/lib/tabs/bootstrap-tab.js"></script>
+<script>
+
+    function addTabs(id, text, url) {
+        console.log(url)
+        $("#J_iframe").prop('src', url);
+    }
+
+    var ch = window.innerHeight;
+    $("#content-main").height(ch  + 'px');
+</script>
+
+<script>
+    var abc = new Vue({
+        el: "#wrapper",
+        data: {
+            theusername: "我们的DBA",
+            identity: "管理员",
+            student_number: "",
+            profile_photo:"",
+            urlofchatroom:"pages/chat.html"
+        },
+        mounted: function () {
+            var urlA = location.search.split('?');
+            this.student_number = urlA[1];
+            //console.log(this.student_number);
+            this.profile_photo="pages/Template/images/"+this.student_number+".jpg";
+            this.urlofchatroom="pages/chat.html?"+this.student_number;//这句是为了chat.html这个页面能获取到url里学号的信息
+        },
+        methods: {}
+    })
+</script>
+</body>
+
+</html>

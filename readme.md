@@ -32,6 +32,7 @@
 | --------------- | ------------------- |
 | 121.199.77.139  | 数据库、接口 by LZH |
 | 101.132.145.102 | 接口 by STY         |
+| 49.234.96.221 | 接口 by WQ |
 
 #### table更改说明
 
@@ -81,6 +82,7 @@ http://101.132.145.102:5000/api/gettablebyname
 | tableheader      | string[]  | 请求的数据表的字段名的集合 |
 | tableinformation | string[,] | 请求的数据表的值的集合     |
 
+
 下面的这个GET方法和上面的POST方法功能一致
 
 [GET]
@@ -100,3 +102,19 @@ http://101.132.145.102:5000/api/gettable?table=student
 ```
 
 接口响应内容同上。
+
+#### 2.发送消息接口
+
+请求示例：
+
+```json
+{
+    "sender_id":"1850002",
+    "receiver_id":"1850003",
+    "content":"test!haha"
+}
+```
+
+返回值：
+
+"success"或"fail"

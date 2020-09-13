@@ -66,7 +66,11 @@
 
         .person {
             height: 70px;
-            background-color: #9d9d9d;
+
+        }
+
+        .person:hover {
+            background-color: #d9d8d8;
         }
 
         .right {
@@ -74,6 +78,14 @@
             background-color: #f5f5f5;
             padding: 0;
         }
+
+        .theprofile {
+            width: 42px;
+            height: 42px;
+            margin-top: 15px;
+            margin-left: 15px;
+        }
+
     </style>
 </head>
 <body>
@@ -89,7 +101,16 @@
                 </div>
             </div>
             <div class="col-xs-12 person">
-
+                <div class="form-inline row">
+                    <img class="theprofile" v-bind:src="theprofile">
+                    青袍君
+                </div>
+            </div>
+            <div class="col-xs-12 person">
+                <div class="form-inline row">
+                    <img class="theprofile" v-bind:src="theprofile">
+                    青袍君
+                </div>
             </div>
 
         </div>
@@ -113,23 +134,36 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="lib/bootstrap.js"></script>
 <script src="lib/vue.js"></script>
+<script src="lib/axios.js"></script>
 <script>
     var abc = new Vue({
         el: "#chatroom",
         data: {
-            student_number:"",
-            thePersonYouTalkTo:"thePersonYouTalkTo~",
-            urlOfChatRecord:"chat_record.html"
+            student_number: "",
+            thePersonYouTalkTo: "thePersonYouTalkTo~",
+            urlOfChatRecord: "chat_record.html",
+            theprofile: "",
+            listofstudent_num: []
         },
         mounted: function () {
             var urlA = location.search.split('?');
             this.student_number = urlA[1];
             this.urlOfChatRecord = "chat_record.html?" + this.student_number + "?" + this.thePersonYouTalkTo;
+            this.theprofile = "template/images/" + this.student_number + ".jpg";
             //console.log(this.student_number+"from chat");
+            var that = this;
+            axios.get("http://101.132.145.102:5000/api/gettable?table=student").then(
+                function (response) {
+                    for (let i = 0; i < response.data.countofrows; i++) {
+                        that.listofstudent_num.push(response.data.tableinformation[i][0]);
+                    }
+                    console.log(that.listofstudent_num);
+                }, function (err) {
+                    console.log(err);
+                }
+            )
         },
-        methods: {
-
-        }
+        methods: {}
     })
 </script>
 </body>

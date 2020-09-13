@@ -9,7 +9,7 @@ namespace database.Controllers
 {
     [ApiController]
     [Route("api/21")] 
-    public class get21 : ControllerBase
+    public class Get21 : ControllerBase
     {
         [HttpPost]
         public LinkedList<return21> getStuQua([FromBody]string index){

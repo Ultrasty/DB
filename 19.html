@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分配返校批次</title>
+	
+    <link rel="stylesheet" href="pages/lib/bootstrap.css">
+    <script src="pages/lib/vue.js"></script>
+    <script src="pages/lib/jquery.js"></script>
+    <script src="pages/lib/bootstrap.js"></script>
+	<script src="pages/lib/axios.js"></script>
+	
+	<!--CDN
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	bootstrap.js依赖于jquery.js，因此先引入
+	<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    -->
+	<style>
+        body {
+            padding-top: 0px;
+        }
+
+        .starter {
+            padding: 40px 15px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="app">
+<!--页面顶部的导航栏-->
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+						data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">学生返校批次</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				
+				<div class="navbar-form navbar-left" method="post">
+					<button type="submit" class="btn btn-default" @click="submitone">已有批次查询</button>
+					<button type="submit" class="btn btn-default" @click="submittwo">一键分配新生</button>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="19.html">清空</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						   aria-expanded="false">其他 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<!--页面底部的导航栏-->
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">
+					学生健康信息数据库/疫情打卡系统
+				</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<!--<li class="active"><a href="#">首页</a></li>
+					<li><a href="#">登录</a></li>-->
+					<li><a href="#">Copyright@2020</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<span style="font-size:10px">*返校条件：该学生处于安全的省市;该学生当前健康状态健康;该学生一周内没有发生跨省活动记录</span>
+		<table class="table table-hover " v-if="ifshow">
+			<caption>已分配批次</caption>
+			<thead>
+			<tr>
+				<th>student_ID</th>
+				<th>date</th>
+				<th>transport</th>
+				<th>trip_num</th>
+				<th>batch_num</th>
+				<th>semester</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr v-for="items in tablecontent">
+				<td v-for="x in items">{{x}}</td>
+			</tr>
+			</tbody>
+		</table>
+		<table class="table table-hover " v-if="isshow">
+			<caption>新生分配</caption>
+			<thead>
+			<tr>
+				<th>student_ID</th>
+				<th>student_name</th>
+				<th>batch_num</th>
+				<th>date</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr v-for="data in result">
+				<td v-for="y in data">{{y}}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<!--Vue.js代码-->
+<script>
+
+    var abc = new Vue({
+        el: "#app",
+        data: {
+			ifshow:false,
+			isshow:false,
+			tablecontent:[],
+			result:[]
+        },
+        methods: {
+            submitone: function () {
+                var url = "http://101.132.145.102:5000/api/gettable?table=back_info";
+                let that = this;
+                axios.get(url).then(function (response) {
+                    that.tablecontent = response.data.tableinformation;
+                    that.ifshow=true;
+                }, function (err) {
+                    console.log(err);
+                })
+            },
+			submittwo: function () {
+				console.log("123");
+                var url = "http://49.234.96.221:82/api/19";
+                let that = this;
+                axios.get(url).then(function (response) {
+					console.log("123456");
+                    that.result = response.rdata;
+                    that.ifshow2=true;
+					console.log(response.data)
+                }, function (err) {
+                    console.log(err);
+                })
+            }
+        }
+    })
+	
+</script>
+</body>
+</html>

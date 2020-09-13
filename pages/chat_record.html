@@ -19,6 +19,37 @@
             padding-left: 20px;
             padding-bottom: 20px;
         }
+
+        .thelefthead {
+            width: 35px;
+            height: 35px;
+            margin-left: 20px;
+            margin-top: 20px;
+            display: block;
+        }
+
+        .theleftcontent {
+            margin-top: 20px;
+            margin-left: 20px;
+            background-color: white;
+            height: 35px;
+
+        }
+
+        .therighthead {
+            width: 35px;
+            height: 35px;
+            margin-left: -10px;
+            margin-top: 20px;
+            display: block;
+        }
+
+        .therightcontent {
+            margin-top: 20px;
+            margin-left: 20px;
+            background-color: #98e165;
+            height: 35px;
+        }
     </style>
 </head>
 <body>
@@ -26,6 +57,22 @@
     <div class="thehead">
         {{thePersonYouTalkTo}}
     </div>
+
+    <div class="row">
+        <div class="col-xs-1"><img src="Template/images/1850000.jpg" class="thelefthead"></div>
+        <div class="col-xs-7">
+            <div class="theleftcontent">你好啊哈哈哈你好啊哈哈哈</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-7 col-xs-offset-4">
+            <div class="therightcontent">你好啊哈哈哈你好啊哈哈哈</div>
+        </div>
+        <div class="col-xs-1">
+            <img src="Template/images/1850000.jpg" class="therighthead">
+        </div>
+    </div>
+
 
 </div>
 
