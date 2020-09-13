@@ -102,3 +102,19 @@ http://101.132.145.102:5000/api/gettable?table=student
 ```
 
 接口响应内容同上。
+
+#### 2.发送消息接口
+
+请求示例：
+
+```json
+{
+    "sender_id":"1850002",
+    "receiver_id":"1850003",
+    "content":"test!haha"
+}
+```
+
+返回值：
+
+"success"或"fail"

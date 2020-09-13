@@ -28,4 +28,10 @@ namespace API1.Models
         public string receiver_id;
         public string content;
     }
+
+    public class twoperson
+    {
+        public string sender_id;
+        public string receiver_id;
+    }
 }
