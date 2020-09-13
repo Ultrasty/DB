@@ -134,8 +134,8 @@
 						"date": this.date
 					}).then(function (response) {
 						console.log("123456");
-						that.result = response.result;
-						console.log(response.result)
+						that.result = response.data;
+						console.log(response.data)
 						}, function (err) {
 							console.log(err);
 						})
