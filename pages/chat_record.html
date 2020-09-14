@@ -57,17 +57,17 @@
     <div class="thehead">
         {{thePersonYouTalkTo}}
     </div>
-    <div v-for="item in the_final_list">
-        <div class="row">
+    <div v-for="(item,index) in the_final_list">
+        <div class="row" v-if="who_send[index]">
             <div class="col-xs-1"><img src="Template/images/1850000.jpg" class="thelefthead"></div>
             <div class="col-xs-7">
                 <div class="theleftcontent">{{item[3].split(" ")[0]+ " " +item[4]}}<br>{{item[5]}}</div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" v-if="!who_send[index]">
             <div class="col-xs-7 col-xs-offset-4">
-                <div class="therightcontent">你好啊哈哈哈你好啊哈哈哈</div>
+                <div class="therightcontent">{{item[3].split(" ")[0]+ " " +item[4]}}<br>{{item[5]}}</div>
             </div>
             <div class="col-xs-1">
                 <img src="Template/images/1850000.jpg" class="therighthead">
@@ -130,12 +130,12 @@
                 while(i<that.listofmessage_mine.length && j<that.listofmessage_other.length){
                     if(parseInt(that.listofmessage_mine[i][0])<parseInt(that.listofmessage_other[j][0])){
                         that.the_final_list.push(that.listofmessage_mine[i]);
-                        that.who_send.push(1);
+                        that.who_send.push(true);
                         i++;
                     }
                     else{
                         that.the_final_list.push(that.listofmessage_other[j]);
-                        that.who_send.push(0);
+                        that.who_send.push(false);
                         j++;
                     }
                 }
