@@ -156,8 +156,8 @@
                 let that = this;
                 axios.get(url).then(function (response) {
 					console.log("123456");
-                    that.result = response.rdata;
-                    that.ifshow2=true;
+                    that.result = response.data;
+                    that.isshow=true;
 					console.log(response.data)
                 }, function (err) {
                     console.log(err);
