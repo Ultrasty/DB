@@ -93,7 +93,9 @@
             listofmessage_mine:[],
             listofmessage_other:[],
             the_final_list:[],//最终聊天列表
-            who_send:[]// 1表示由我发送 0表示由对方发送
+            who_send:[],// 1表示由我发送 0表示由对方发送
+            sender_profile:"",
+            receiver_profile:""
         },
         mounted: function () {
             var urlA = location.search.split('?');

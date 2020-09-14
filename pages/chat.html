@@ -115,8 +115,8 @@
             </div>
             <div style="height: 24vh;background-color: white;">
                 <img style="display: block;" src="img/chatico.png">
-                <textarea>我是一个文本框。</textarea>
-                <div id="fasong">
+                <textarea v-model="themsg"></textarea>
+                <div id="fasong" @click="send">
                     发送(S)
                 </div>
             </div>
@@ -140,7 +140,8 @@
             theprofile: "",
             listofstudent_num: [],
             listofstudent_number:[],
-            listofname:[]
+            listofname:[],
+            themsg:""
         },
         mounted: function () {
             var urlA = location.search.split('?');
@@ -167,6 +168,20 @@
             changeperson: function (index) {
                 this.thePersonYouTalkTo = this.listofstudent_number[index];
                 this.urlOfChatRecord = "chat_record.html?" + this.student_number + "?" + this.thePersonYouTalkTo;
+            },
+            send:function () {
+                let that=this;
+                axios.post("http://101.132.145.102:5000/api/sendmessage",
+                {
+                    "sender_id":that.student_number,
+                    "receiver_id":that.thePersonYouTalkTo,
+                    "content":that.themsg
+                }
+                ).then(function (response) {
+
+                },function (err) {
+                    console.log(err);
+                })
             }
         }
     })
