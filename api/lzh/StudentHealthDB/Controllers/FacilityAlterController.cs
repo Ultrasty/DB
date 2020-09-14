@@ -17,6 +17,22 @@ namespace StudentHealthDB.Controllers
             FacilityAlterResponse resp = new FacilityAlterResponse();
             try
             {
+                //时间更改的约束
+                if (req.starttime!=null && req.endtime!=null && req.starttime >= req.endtime)
+                {
+                    resp.result = "fail";
+                    return resp;
+                }
+                if (req.starttime != null && req.starttime < 0)
+                {
+                    resp.result = "fail";
+                    return resp;
+                }
+                if (req.starttime != null && req.endtime > 24)
+                {
+                    resp.result = "fail";
+                    return resp;
+                }
                 MySqlConnection conn = SQLManager.getConn(); //连接数据库
                 conn.Open(); //打开数据库连接mdr.Close();
                 MySqlCommand cmd = null;//创建查询指令

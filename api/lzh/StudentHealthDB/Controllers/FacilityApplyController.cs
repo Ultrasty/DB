@@ -62,6 +62,22 @@ namespace StudentHealthDB.Controllers
             FacilityApplyResponse resp = new FacilityApplyResponse();
             try
             {
+                if(req.starttime>=req.endtime)
+                {
+                    resp.result = "fail";
+                    return resp;
+                }
+
+                //确保申请时间晚于当前
+                DateTime today = DateTime.Now;//获取当前时间
+                string applyHour = req.starttime.ToString("00");//转换小时为字符串
+                string testTime = req.date.ToString("yyyy-MM-dd") + " " + applyHour + ":00:00";//连接成申请时刻
+                if (DateTime.Compare(today, Convert.ToDateTime(testTime)) > 0)
+                {
+                    resp.result = "fail";
+                    return resp;
+                }
+
                 MySqlConnection conn = SQLManager.getConn(); //连接数据库
                 conn.Open(); //打开数据库连接
                 MySqlCommand test = null;//创建查询指令
