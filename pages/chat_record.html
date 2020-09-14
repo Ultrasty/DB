@@ -50,22 +50,26 @@
             background-color: #98e165;
             height: 35px;
         }
+
+        #chatrecord{
+            height: 100vh;
+        }
     </style>
 </head>
 <body>
-<div id="chatrecord">
+<div id="chatrecord" @click="refresh">
     <div class="thehead">
         {{thePersonYouTalkTo}}
     </div>
     <div v-for="(item,index) in the_final_list">
-        <div class="row" v-if="who_send[index]">
+        <div class="row" v-if="!who_send[index]">
             <div class="col-xs-1"><img src="Template/images/1850000.jpg" class="thelefthead"></div>
             <div class="col-xs-7">
                 <div class="theleftcontent">{{item[3].split(" ")[0]+ " " +item[4]}}<br>{{item[5]}}</div>
             </div>
         </div>
 
-        <div class="row" v-if="!who_send[index]">
+        <div class="row" v-if="who_send[index]">
             <div class="col-xs-7 col-xs-offset-4">
                 <div class="therightcontent">{{item[3].split(" ")[0]+ " " +item[4]}}<br>{{item[5]}}</div>
             </div>
@@ -98,52 +102,63 @@
             receiver_profile: ""
         },
         mounted: function () {
-            var urlA = location.search.split('?');
-            this.thePersonYouTalkTo = urlA[2];
-            this.profile_photo = "pages/Template/images/" + this.student_number + ".jpg";
-            this.twoperson.push(urlA[1]);
-            this.twoperson.push(urlA[2]);
-            let that = this;
+            this.refresh();
 
-            axios.post("http://101.132.145.102:5000/api/getmessage", {
-                "sender_id": that.twoperson[0],
-                "receiver_id": that.twoperson[1]
-            }).then(function (response) {
-                that.listofmessage_mine = response.data.tableinformation;
-                console.log(that.listofmessage_mine);
-            }, function (err) {
-                console.log(err);
-            })
+        },
 
-            axios.post("http://101.132.145.102:5000/api/getmessage", {
-                "sender_id": that.twoperson[1],
-                "receiver_id": that.twoperson[0]
-            }).then(function (response) {
-                that.listofmessage_other = response.data.tableinformation;
-                console.log(that.listofmessage_other);
-            }, function (err) {
-                console.log(err);
-            })
 
-            let i = 0;
-            let j = 0;
+        methods: {
 
-            setTimeout(function () {
 
-                while (i < that.listofmessage_mine.length && j < that.listofmessage_other.length) {
-                    if (parseInt(that.listofmessage_mine[i][0]) < parseInt(that.listofmessage_other[j][0])) {
-                        that.the_final_list.push(that.listofmessage_mine[i]);
-                        that.who_send.push(true);
-                        i++;
-                    } else {
-                        that.the_final_list.push(that.listofmessage_other[j]);
-                        that.who_send.push(false);
-                        j++;
+            refresh: async function () {
+                var urlA = location.search.split('?');
+                this.thePersonYouTalkTo = urlA[2];
+                this.profile_photo = "pages/Template/images/" + this.student_number + ".jpg";
+                this.twoperson.push(urlA[1]);
+                this.twoperson.push(urlA[2]);
+                let that = this;
+                //await用于声明在一个异步函数中等待语句执行完毕，太好用辣！
+                await axios.post("http://101.132.145.102:5000/api/getmessage", {
+                    "sender_id": that.twoperson[0],
+                    "receiver_id": that.twoperson[1]
+                }).then(function (response) {
+                    that.listofmessage_mine = response.data.tableinformation;
+                    console.log(that.listofmessage_mine);
+                }, function (err) {
+                    console.log(err);
+                })
+
+                await axios.post("http://101.132.145.102:5000/api/getmessage", {
+                    "sender_id": that.twoperson[1],
+                    "receiver_id": that.twoperson[0]
+                }).then(function (response) {
+                    that.listofmessage_other = response.data.tableinformation;
+                    console.log(that.listofmessage_other);
+                }, function (err) {
+                    console.log(err);
+                })
+
+                let i = 0;
+                let j = 0;
+
+                //setTimeout(function () {//别用这个timeout...
+                that.who_send = [];
+                that.the_final_list = [];
+                if (that.listofmessage_mine != null && that.listofmessage_other != null) {
+                    while (i < that.listofmessage_mine.length && j < that.listofmessage_other.length) {
+                        if (parseInt(that.listofmessage_mine[i][0]) < parseInt(that.listofmessage_other[j][0])) {
+                            that.the_final_list.push(that.listofmessage_mine[i]);
+                            that.who_send.push(true);
+                            i++;
+                        } else {
+                            that.the_final_list.push(that.listofmessage_other[j]);
+                            that.who_send.push(false);
+                            j++;
+                        }
                     }
                 }
 
-
-                if (i == that.listofmessage_mine.length) {
+                if ((that.listofmessage_mine == null || i == that.listofmessage_mine.length) && that.listofmessage_other != null) {
                     while (j < that.listofmessage_other.length) {
                         that.the_final_list.push(that.listofmessage_other[j]);
                         that.who_send.push(false);
@@ -151,7 +166,7 @@
                     }
                 }
 
-                if (j == that.listofmessage_other.length) {
+                if ((that.listofmessage_other == null || j == that.listofmessage_other.length) && that.listofmessage_mine != null) {
                     while (i < that.listofmessage_mine.length) {
                         that.the_final_list.push(that.listofmessage_mine[i]);
                         that.who_send.push(true);
@@ -160,10 +175,9 @@
                 }
                 console.log(that.the_final_list);
                 console.log(that.who_send);
-            }, 1000)
-
-        },
-        methods: {}
+                //}, 200)
+            }
+        }
     })
 </script>
 </body>
