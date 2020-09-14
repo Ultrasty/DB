@@ -57,22 +57,23 @@
     <div class="thehead">
         {{thePersonYouTalkTo}}
     </div>
+    <div v-for="item in the_final_list">
+        <div class="row">
+            <div class="col-xs-1"><img src="Template/images/1850000.jpg" class="thelefthead"></div>
+            <div class="col-xs-7">
+                <div class="theleftcontent">{{item[3].split(" ")[0]+ " " +item[4]}}<br>{{item[5]}}</div>
+            </div>
+        </div>
 
-    <div class="row">
-        <div class="col-xs-1"><img src="Template/images/1850000.jpg" class="thelefthead"></div>
-        <div class="col-xs-7">
-            <div class="theleftcontent">你好啊哈哈哈你好啊哈哈哈</div>
+        <div class="row">
+            <div class="col-xs-7 col-xs-offset-4">
+                <div class="therightcontent">你好啊哈哈哈你好啊哈哈哈</div>
+            </div>
+            <div class="col-xs-1">
+                <img src="Template/images/1850000.jpg" class="therighthead">
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-7 col-xs-offset-4">
-            <div class="therightcontent">你好啊哈哈哈你好啊哈哈哈</div>
-        </div>
-        <div class="col-xs-1">
-            <img src="Template/images/1850000.jpg" class="therighthead">
-        </div>
-    </div>
-
 
 </div>
 
@@ -81,17 +82,80 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="lib/bootstrap.js"></script>
 <script src="lib/vue.js"></script>
+<script src="lib/axios.js"></script>
 <script>
     var abc = new Vue({
         el: "#chatrecord",
         data: {
             student_number: "",
-            thePersonYouTalkTo: ""
+            thePersonYouTalkTo: "",
+            twoperson: [],//第一个是自己，第二个是对方
+            listofmessage_mine:[],
+            listofmessage_other:[],
+            the_final_list:[],//最终聊天列表
+            who_send:[]// 1表示由我发送 0表示由对方发送
         },
         mounted: function () {
             var urlA = location.search.split('?');
             this.thePersonYouTalkTo = urlA[2];
             this.profile_photo = "pages/Template/images/" + this.student_number + ".jpg";
+            this.twoperson.push(urlA[1]);
+            this.twoperson.push(urlA[2]);
+            let that = this;
+
+            axios.post("http://101.132.145.102:5000/api/getmessage",{
+                "sender_id" : that.twoperson[0],
+                "receiver_id" : that.twoperson[1]
+            }).then(function (response) {
+                that.listofmessage_mine=response.data.tableinformation;
+                console.log(that.listofmessage_mine);
+            },function (err) {
+                console.log(err);
+            })
+
+            axios.post("http://101.132.145.102:5000/api/getmessage",{
+                "sender_id" : that.twoperson[1],
+                "receiver_id" : that.twoperson[0]
+            }).then(function (response) {
+                that.listofmessage_other=response.data.tableinformation;
+                console.log(that.listofmessage_other);
+            },function (err) {
+                console.log(err);
+            })
+
+            let i = 0;
+            let j = 0 ;
+
+            setTimeout(function () {
+                while(i<that.listofmessage_mine.length && j<that.listofmessage_other.length){
+                    if(parseInt(that.listofmessage_mine[i][0])<parseInt(that.listofmessage_other[j][0])){
+                        that.the_final_list.push(that.listofmessage_mine[i]);
+                        that.who_send.push(1);
+                        i++;
+                    }
+                    else{
+                        that.the_final_list.push(that.listofmessage_other[j]);
+                        that.who_send.push(0);
+                        j++;
+                    }
+                }
+
+                if(i==that.listofmessage_mine.length){
+                    while(j<that.listofmessage_other.length){
+                        that.the_final_list.push(that.listofmessage_other[j]);
+                        j++;
+                    }
+                }
+
+                if(j==that.listofmessage_other.length){
+                    while(i<that.listofmessage_mine.length){
+                        that.the_final_list.push(that.listofmessage_mine[i]);
+                        i++;
+                    }
+                }
+                console.log(that.the_final_list);
+            },1000)
+
         },
         methods: {}
     })
