@@ -102,6 +102,10 @@
         },
         mounted: function () {
             this.refresh();
+            let that = this;
+            setInterval(function () {
+                that.refresh();
+            },100)
         },
 
 
