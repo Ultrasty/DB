@@ -109,6 +109,10 @@ http://101.132.145.102:5000/api/gettable?table=student
 
 #### 2.发送消息接口
 
+[POST]
+
+http://101.132.145.102:5000/api/sendmessage
+
 请求示例：
 
 ```json
@@ -124,6 +128,10 @@ http://101.132.145.102:5000/api/gettable?table=student
 "success"或"fail"
 
 #### 3.获取消息接口
+
+[POST]
+
+http://101.132.145.102:5000/api/getmessage
 
 请求示例:
 
