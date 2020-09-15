@@ -12,8 +12,8 @@
              
           
           <div id="abc">
-            <input type = "button" value ="老师获取学生病假表" @click="getForm">
-   <table class="1" cellpadding="0" cellspacing="0" v-if="isshow">
+            <input type = "button" value ="老师获取所需要的审批的学生病假表" @click="getForm">
+   <table class="table table-hover" v-if="isshow">
      <tr>
        <td>病假单编号</td>
        <td>学号</td>
@@ -106,6 +106,35 @@
              </li>
            </ul> -->
           </div>
+          
+        </div>
+        <div id = "app">
+          <p>输入病假单编号：</p>
+          <input v-model = "sickleave_ID" placeholder="">
+          <input type = "button" value ="老师查看已经销假的病假单" @click="submittwo">
+          
+          <table class="table table-hover"  v-if="ifshow">
+            <tr>
+              <td>学生学号</td>
+              <td>老师ID</td>
+              <td>病假原因</td>
+              <td>学生申请病假时间</td>
+              <td>老师审批时间</td>
+              <td>准假天数</td>
+              <td>销假时间</td>
+              
+            </tr>
+                
+            <tr v-for="item in sickList" v-if="item != null" >
+              <td>{{item.student_ID}}</td>
+              <td>{{item.teacher_ID}}</td>
+              <td>{{item.reason}}</td>	
+              <td>{{item.application_time}}</td>
+              <td>{{item.approval_time}}</td>
+              <td>{{item.allowedays}}</td>
+              <td>{{item.terminate_time}}</td>
+            </tr>
+          </table>
         </div>
          <script>
           
@@ -178,6 +207,28 @@
             }
           }
         )
+
+        var app = new Vue({
+          el:"#app",
+          data:{
+            sickleave_ID:'',
+            ifshow:false,
+            sickList:[]
+          },
+          methods:{
+            submittwo:function(){
+              var that = this;
+              axios.get("http://49.234.96.221:85/api/13".concat("/",this.sickleave_ID)).then(function(response){
+             console.log(response.data);
+            // that.sickleave_ID = response.sickleave_ID;
+             that.sickList = response;
+             that.ifshow= true;
+              },function(err){  })
+            }
+						
+            }
+          
+        })
           </script>
 </body>
 </html>
