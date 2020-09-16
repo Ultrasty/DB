@@ -116,7 +116,7 @@
             </div>
             <div style="height: 24vh;background-color: white;">
                 <img style="display: block;" src="img/chatico.png">
-                <textarea v-model="themsg"></textarea>
+                <textarea v-model="themsg" @keyup.enter="send"></textarea>
                 <div id="fasong" @click="send">
                     发送(S)
                 </div>
