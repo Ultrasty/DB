@@ -34,7 +34,7 @@ namespace StudentHealthDB.Controllers
                     {
                         record rcd = new record();
                         id.Add(Convert.ToString(mdr.GetValue(0)));
-                        rcd.date = Convert.ToString(mdr.GetValue(1));
+                        rcd.date = Convert.ToDateTime(mdr.GetValue(1)).ToString("yyyy-MM-dd");
                         resp.detail.Add(rcd);
                     }
                     mdr.Close();
@@ -46,6 +46,7 @@ namespace StudentHealthDB.Controllers
                         mdr = cmd.ExecuteReader();
                         mdr.Read();
                         resp.detail[i].name = Convert.ToString(mdr.GetValue(0));
+                        mdr.Close();
                     }
                     resp.result = "success";
                 }
