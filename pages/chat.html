@@ -66,7 +66,7 @@
 
         .person {
             height: 70px;
-
+            background-color: #eceae8;
         }
 
         .person:hover {
@@ -77,6 +77,7 @@
             height: 100vh;
             background-color: #f5f5f5;
             padding: 0;
+            position: fixed;
         }
 
         .theprofile {
@@ -109,7 +110,7 @@
 
 
         </div>
-        <div class="col-xs-9 right">
+        <div class="col-xs-9 col-xs-offset-3 right">
             <div class="embed-responsive" style="height: 76vh">
                 <iframe class="embed-responsive-item" v-bind:src="urlOfChatRecord"></iframe>
             </div>
@@ -156,9 +157,24 @@
                         that.listofstudent_num.push("Template/images/" + response.data.tableinformation[i][0] + ".jpg");
                         that.listofname.push(response.data.tableinformation[i][2]);
                         that.listofstudent_number.push(response.data.tableinformation[i][0]);
-                        that.thePersonYouTalkTo = response.data.tableinformation[0][0];
                         that.urlOfChatRecord = "chat_record.html?" + that.student_number + "?" + that.thePersonYouTalkTo;
                     }
+                    that.thePersonYouTalkTo = response.data.tableinformation[0][0];
+                    that.changeperson(0);
+                }, function (err) {
+                    console.log(err);
+                }
+            )
+            axios.get("http://101.132.145.102:5000/api/gettable?table=teacher").then(
+                function (response) {
+                    for (let i = 0; i < response.data.countofrows; i++) {
+                        that.listofstudent_num.push("Template/images/" + response.data.tableinformation[i][0] + ".jpg");
+                        that.listofname.push(response.data.tableinformation[i][2]);
+                        that.listofstudent_number.push(response.data.tableinformation[i][0]);
+                        that.urlOfChatRecord = "chat_record.html?" + that.student_number + "?" + that.thePersonYouTalkTo;
+                    }
+                    that.thePersonYouTalkTo = response.data.tableinformation[0][0];
+                    that.changeperson(0);
                 }, function (err) {
                     console.log(err);
                 }
