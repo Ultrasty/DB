@@ -560,7 +560,7 @@
                     ;
                     if (that.istrue === 1) {
                         alert("学生 登陆成功");
-                        window.location.href = "main.html?" + that.student_number;
+                        window.location.href = "student.html?" + that.student_number;
                     }
                 }, function (err) {
                     console.log(err);
@@ -578,10 +578,10 @@
 
                         if (that.student_number === "000" || that.student_number === "00000") {
                             alert("管理员 登陆成功");
-                            location.href = "DBJ功能主页.html?" + that.student_number;
+                            location.href = "administrator.html?" + that.student_number;
                         } else {
                             alert("教师 登陆成功");
-                            window.location.href = "main - 教师.html?" + that.student_number;
+                            window.location.href = "teacher.html?" + that.student_number;
                         }
                     }
                 }, function (err) {
