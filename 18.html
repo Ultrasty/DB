@@ -96,17 +96,15 @@
 					<th>学号</th>
 					<th>健康码颜色</th>
 					<th>目前健康状况</th>
-					<th>病假ID</th>
+					<th>病假ID(-1表示无病假历史）</th>
 					<th>病假终止日期</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>{{current()}}</td>
-					<td>{{back1}}</td>
-					<td>{{back2}}</td>
-					<th>{{back3}}</th>
-					<th>{{back4}}</th>
+				<tr v-for="items in result">
+					<td v-for="x in items">{{x}}</td>
+				</tr>
 				</tr>
 			</tbody>
 		</table>
@@ -116,11 +114,9 @@
 	var abc = new Vue({
         el: "#app",
         data: {
-			date:"",
-			back1:"",
-			back2:"",
-			back3:"",
-			back4:""
+			number1:"",
+        	date:"",
+			result:[]
 			        },
         methods: {
             submit:function () {
@@ -128,19 +124,11 @@
 				let that = this;
 				axios.get(url).then(function (response) {
 					console.log(response.data);
-					var Array=(response.data || '').split(' ');
-					console.log(Array);
-					that.back1=Array[1];
-					that.back2=Array[2];
-					that.back3=Array[3];
-					that.back4=Array[4];
+					that.result=response.data;
 				}, function (err) {
 					console.log(err);
 				})
             },
-			current:function(){
-				return this.number1;
-			}
 		}
     })
 </script>
