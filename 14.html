@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>学生申请出校</title>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <form>
+        <div style="text-align:center;">
+            <h1>学生申请出校单</h1> 
+          </div>
+          <div style="text-align-last: center;">
+            <div id="app">
+                <p>姓名：</p>
+                <input v-model="message" placeholder="编辑我……">
+                
+                 
+                <p>学号：</p>
+                <input v-model="message2" placeholder="编辑我……">
+              </div> 
+             
+              
+                
+              <div id="ap">
+                 <p>性别：</p>
+                <input type="radio" id="男" value="男" v-model="picked">
+                <label for="男">男</label>
+                <br>
+                <input type="radio" id="女" value="女" v-model="picked">
+                <label for="女">女</label>
+                <br>
+                
+              </div>
+              <div id = 'telephone'>
+                <p>
+                  联系电话：
+                </p>
+                <input v-model = "message7" placeholder= "编辑我……">
+            
+              </div>
+            <div id = "zhuanye">
+              <p>专业学院：</p>
+              <input v-model="message3" placeholder="编辑我……">
+             </div>  
+             <div id = 'nianji'>
+               <p >年级：</p>
+               <input type= "radio" id= "大一" value= "大一" v-model ="picked">
+               <label for = "大一">大一</label>
+               <br>
+               <input type= "radio" id= "大二" value= "大二" v-model ="picked">
+               <label for = "大二">大二</label>
+               <br>
+               <input type= "radio" id= "大三" value= "大三" v-model ="picked">
+               <label for = "大三">大三</label>
+               <br>
+               <input type= "radio" id= "大四" value= "大四" v-model ="picked">
+               <label for = "大四">大四</label>
+               <br>
+             </div>
+             <div id = 'reason'>
+               <p>请填写出校原因：</p>
+              <input v-model = "message4" placeholder= "编辑我……">
+             </div>
+             <div id = 'time'>
+              <p>请填写申请出校时间：</p>
+             <input v-model = "message5" placeholder= "编辑我……">
+          
+             <p>请填写预计返校时间：</p>
+             <input v-model = "message6" placeholder= "编辑我……">
+             <div>
+                 <p></p>
+             </div>
+           
+            </div>
+            
+            <input type = "submit" value ="提交" >
+           
+          </div>
+          </form>
+         
+          <script>
+          
+          new Vue({
+          el: '#app',
+          data: {
+           message:'例如：张三',
+           message2:'例如：1550350'
+          }
+          })
+          
+          new Vue({
+          el: '#ap',
+          data: {
+            picked : '男'
+          }
+          })
+          new Vue({
+            el:'#zhuanye',
+            data:{
+              message3:'例如：软件学院数字媒体'
+            }
+          })
+          new Vue({
+            el:'#nianji',
+            data:{
+              picked : '大一'
+            }
+          })
+          new Vue({
+            el:'#reason',
+            data:{
+              message4:''
+            }
+          })
+          new Vue({
+            el:'#time',
+            data:{
+              message5:'',
+              message6:''
+            }
+          })
+          new Vue({
+            el:'#telephone',
+            data:{
+              message7:''
+            }
+          })
+
+          </script>     
+</body>
+</html>

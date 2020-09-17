@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>学生提交病假</title>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form>
+        <div style="text-align:center;">
+            <h1>学生申请病假单</h1> 
+          </div>
+          <div style="text-align-last: center;">
+          <div id = "abc">
+            
+                <!-- <p>姓名：</p>
+                <input v-model="name" placeholder="编辑我……"> -->
+                
+                 
+                <p>学号：</p>
+                <input v-model="student_ID" placeholder="编辑我……">
+              
+             
+              
+                
+<!--               
+                 <p>性别：</p>
+                <input type="radio" id="男" value="男" v-model="picked">
+                <label for="男">男</label>
+                <br>
+                <input type="radio" id="女" value="女" v-model="picked">
+                <label for="女">女</label>
+                <br>
+                
+              
+              
+                <p>
+                  联系电话：
+                </p>
+                <input v-model = "telephone" placeholder= "编辑我……">
+            
+              
+              <p>专业学院：</p>
+              <input v-model="professional" placeholder="编辑我……"> -->
+             
+               <!-- <p >年级：</p>
+               <input type= "radio" id= "大一" value= "大一" v-model ="picked">
+               <label for = "大一">大一</label>
+               <br>
+               <input type= "radio" id= "大二" value= "大二" v-model ="picked">
+               <label for = "大二">大二</label>
+               <br>
+               <input type= "radio" id= "大三" value= "大三" v-model ="picked">
+               <label for = "大三">大三</label>
+               <br>
+               <input type= "radio" id= "大四" value= "大四" v-model ="picked">
+               <label for = "大四">大四</label>
+               <br>  -->
+            
+            
+               <p>请填写病假原因：</p>
+              <input v-model = "reason" placeholder= "编辑我……">
+            
+            
+              <p>请填写申请病假时间：</p>
+             <input v-model = "application_time" placeholder= "编辑我……">
+          
+             <!-- <p>请填写预计销假时间：</p>
+             <input v-model = "endtime" placeholder= "编辑我……"> -->
+             <div>
+                 <p></p>
+             </div>
+           
+            <!-- <p>批准老师ID：</p>
+            <input v-model = "teacher_ID" placeholder="">
+
+            <p>批准时长：</p>
+            <input v-model = "allowedays" placeholder="">
+
+            <p>老师批准病假时间：</p>
+            <input v-model = "approval_time" placeholder=""> -->
+
+            <p> </p>
+            <input type = "button" value ="学生点击提交" @click="submit">
+            
+          </div>
+          </form>
+         
+          <script>
+          
+          
+           
+           
+      var abc =   new Vue({
+          el:"#abc",
+          data:{
+          name:'',
+          student_ID:'',
+          //picked : '男',
+          //professional:'',
+          //picked : '大一',
+          reason:'',
+          application_time:'',
+          endtime:'',
+          telephone:'',
+          teacher_ID:'',
+          allowedays:'',
+          approval_time:''
+        
+          },
+          methods:{
+            submit: function () {
+				console.log(this.date);
+                var url = "http://49.234.96.221:85/api/12/apply";//学生提交student_ID,application_time,reason
+                let that = this;
+				axios.post(
+					url, {
+            "student_ID": this.student_ID,
+            "reason":this.reason,
+            "application_time":this.application_time
+					}).then(function (response) {
+						alert("提交成功");
+						that.result = response.data;
+						console.log(response.data)
+						}, function (err) {
+							console.log(err);
+						})
+            }
+            
+            }
+      })
+          </script>
+</body>
+</html>
