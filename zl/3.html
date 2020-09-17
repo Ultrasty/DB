@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	
+    <link rel="stylesheet" href="../pages/lib/bootstrap.css">
+    <script src="../pages/lib/vue.js"></script>
+    <script src="../pages/lib/jquery.js"></script>
+    <script src="../pages/lib/bootstrap.js"></script>
+	
+	<!--CDN
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	bootstrap.js依赖于jquery.js，因此先引入
+	<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    -->
+	<style>
+        body {
+            padding-top: 0px;
+        }
+
+        .starter {
+            padding: 40px 15px;
+            text-align: center;
+        }
+
+
+    </style>
+	</head>
+
+	<body>
+		<!--页面顶部的导航栏-->
+<nav class="navbar navbar-default">
+	<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+									data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">信息管理</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+							<li class="active"><a href="#">学生<span class="sr-only">(current)</span></a></li>
+							<li><a href="#">教师</a></li>
+
+					</ul>
+					<form class="navbar-form navbar-left" >
+						 
+					</form>
+					<div class="form-group">
+							<input type="text" @keyup.enter="searchDefaultRecords"
+							class="form-control" placeholder="请输入id">
+					</div>
+					<button type="submit" class="btn btn-default">搜索</button>
+					<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+										 aria-expanded="false">操作 <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+											<li><a href="#">增加</a></li>
+											<li role="separator" class="divider"></li>
+											<li><a href="#">删除</a></li>
+											<li role="separator" class="divider"></li>
+											<li><a href="#">修改</a></li>
+									</ul>
+							</li>
+					</ul>
+			</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+
+<!--页面底部的导航栏-->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+	<div class="container">
+			<div class="navbar-header">
+					<a href="#" class="navbar-brand">
+							学生健康信息数据库/疫情打卡系统
+					</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+							<li class="active"><a href="#">首页</a></li>
+							<li><a href="#">登录</a></li>
+							<li><a href="#">关于本课设</a></li>
+					</ul>
+			</div>
+	</div>
+</nav>
+
+
+
+
+<div id="app" style="display: none;" :style="{display: 'block'}">
+	
+			<div class="panel panel-primary">
+				<div class="panel-body form-inline">
+						<label>
+								id:
+						</label>
+						<input type="text" class="form-control" v-model="id">&nbsp&nbsp&nbsp&nbsp
+						<label>
+								密码：
+						</label>
+						<input type="text" class="form-control" v-model="password">&nbsp&nbsp&nbsp&nbsp
+						<label>
+								姓名:
+						</label>
+						<input type="text" class="form-control" v-model="name">&nbsp&nbsp&nbsp&nbsp
+						<label>
+								学院:
+						</label>
+						<input type="text" class="form-control" v-model="school">&nbsp&nbsp&nbsp&nbsp
+						<label>
+								职称:
+						</label>
+						<input type="text" class="form-control" v-model="job">&nbsp&nbsp&nbsp&nbsp<br><br>
+						<label>
+								联系方式:
+						</label>
+						<input type="text" class="form-control" v-model="number1">&nbsp&nbsp&nbsp&nbsp<br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						<button type="button" class="btn" @click="add">添加</button>
+						<button type="button" class="btn" @click="update">修改</button>
+				</div>
+		</div>
+
+		<div class="container">
+
+			
+			<table class="table table-hover table-striped">
+				<caption>教师</caption>
+				<thead>
+					<tr>
+							<th>id</th>
+							<th>密码</th>
+							<th>姓名</th>
+							<th>学院</th>
+							<th>职称</th>
+							<th>联系方式</th>
+							<th>操作</th>
+							<th></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr v-for="(item) in list">
+							<td>{{item.id}}</td>
+							<td>{{item.password}}</td>
+							<td>{{item.name}}</td>
+              <td>{{item.school}}</td>
+              <td>{{item.job}}</td>
+							<td>{{item.number1}}</td>
+							<td><button type="button" class="btn btn-info" @click="bind(item.id)">修改</button>
+                <button type="button" class="btn btn-warning" @click="del(item.id)">删除</button>
+            </td>
+					</tr>
+					</tbody>	
+			</table>
+		</div>
+</div>
+
+
+
+
+<!--Vue.js代码-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+		let vm=new Vue({
+				el:'#app',
+				data:{
+						id:'',
+						password:'',
+						name:'',
+            school:'',
+            job:'',
+						number1:'',
+						list:[
+								{id:'1853111', password:'1853991', name:'张三', school:'软件学院', job:'教授',number1:'11111'},
+								{id:'1853111', password:'1853991', name:'张三', school:'软件学院', job:'教授',number1:'11111'}
+						]
+				},
+				methods:{
+						add(){
+								this.list.push({id:this.id, password:this.password, name:this.name, school:this.school, job:this.job, number1:this.number1})
+								this.id=this.password=this.name=this.school=this.job=this.number1=''
+								var url = "http://121.199.77.139:8090/teacher/add";
+            		var that=this;
+            		axios.post(
+                url, {
+                   		"id":this.id,
+                      "password":this.password,
+                      "name":this.name,
+                      "department":this.school,
+                      "title":this.job,
+                      "telephone":this.number1
+                }).then(function (response) {
+                console.log(response.data);
+              	 that.result=response.data;
+               	if(that.result.result==="success")
+								alert("添加成功");
+								if(that.result.result==="id existed")
+								alert("id已存在");
+								if(that.result.result==="fail")
+								alert("创建失败");
+  
+            }, function (err) {
+                console.log(err);
+            })
+						},
+						update(){
+
+									var url = "http://121.199.77.139:8090/teacher/alter";
+            			var that=this;
+            			console.log("efrgrtb");
+									axios.post(
+									url, {
+                      "id":this.id,
+                      "password":this.password,
+                      "name":this.name,
+                      "department":this.school,
+                      "title":this.job,
+                      "telephone":this.number1
+									}).then(function (response) {
+									console.log(response.data);
+									that.result=response.data;
+									if(that.result.result==="success")
+									alert("修改成功");
+									if(that.result.result==="wrong id")
+									alert("id不存在");
+		
+							}, function (err) {
+									console.log(err);
+							})
+
+							/*
+								if (this.index==""){
+											alert('未选择数据')
+											return
+									}
+
+									*/
+									// 找到索引
+									this.list[this.index].id=this.id
+									this.list[this.index].password=this.password
+									this.list[this.index].name=this.name
+									this.list[this.index].school=this.school
+									this.list[this.index].job=this.job
+									this.list[this.index].number1=this.number1
+									this.id=this.password=this.name=this.school=this.job=this.number1=''
+									
+							},
+						bind(id){
+								this.list.some((item,i)=>{
+                    if (item.id==id){
+												this.id=item.id;
+												this.password=item.password;
+                        this.name=item.name
+                        this.school=item.school
+                        this.job=item.job
+                        this.number1=item.number1
+												this.index=i
+												var msg_alert="已选择："+id
+                        alert(msg_alert)
+                        return true;
+                    }
+                })
+						},
+						del(id){
+							let index=this.list.findIndex(item =>{
+									if(item.id==id){
+										return true
+									}
+							})
+
+							this.list.splice(index,1)
+						}
+				}
+		})
+</script>
+
+
+
+</body>
+</html>
