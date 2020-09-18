@@ -45,7 +45,7 @@
               <div class="logo">
                 <img class="head" v-bind:src="profile_photo">
               </div>
-              <div class="nick-name">{{student_number}}</div>
+              <div class="nick-name">{{teacher_number}}</div>
               <div>{{identity}}</div>
             </div>
           </li>
@@ -60,99 +60,15 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="ljw/13.html">
               <i class="fa fa fa-users"></i>
-              <span class="nav-label">功能2</span>
-              <span class="fa arrow"></span>
+              <span class="nav-label">审批学生病假单</span>
             </a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a class="J_menuItem" onclick="addTabs('1.html', '查询', './pages/SearchVehicle.html')">查询</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
-              </li>
-            </ul>
           </li>
-          <li>
-            <a href="#">
-              <i class="fa fa fa-user-times"></i>
-              <span class="nav-label">功能3</span>
-              <span class="fa arrow"></span>
-            </a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa fa-file-o"></i>
-              <span class="nav-label">功能4</span>
-              <span class="fa arrow"></span>
-            </a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa fa-files-o"></i>
-              <span class="nav-label">功能5</span>
-              <span class="fa arrow"></span>
-            </a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa fa-edit"></i>
-              <span class="nav-label">功能6</span>
-              <span class="fa arrow"></span>
-            </a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa fa-rebel"></i>
-              <span class="nav-label">功能7</span>
+		  <li>
+            <a href="ywt/24.html">
+              <i class="fa fa fa-users"></i>
+              <span class="nav-label">查看未打卡学生</span>
             </a>
           </li>
         </ul>
@@ -213,8 +129,8 @@
         var urlA = location.search.split('?');
         this.student_number = urlA[1];
         //console.log(this.student_number);
-        this.profile_photo = "pages/Template/images/" + this.student_number + ".jpg";
-        this.urlofchatroom = "pages/chat.html?" + this.student_number;//这句是为了chat.html这个页面能获取到url里学号的信息
+        this.profile_photo = "pages/Template/images/" + this.teacher_number + ".jpg";
+        this.urlofchatroom = "pages/chat.html?" + this.teacher_number;//这句是为了chat.html这个页面能获取到url里学号的信息
       },
       methods: {}
     })
