@@ -18,6 +18,14 @@ namespace dbproj.Controllers
             Connection conn=new Connection();
             MySqlConnection myConn= conn.GetConnection();
             string query=string.Format("select count(student_ID) from leaving_record where student_ID='{0}'",Leave.student_ID);
+            string health=string.Format("select count(*) from student where (student_ID='{0}' and (healthcode_color!='green' or currenthealth_status!=0))",Leave.student_ID);
+            MySqlCommand h=new MySqlCommand(health,myConn);
+            MySqlDataReader heal=h.ExecuteReader();
+            heal.Read();
+            int y=heal.GetInt16(0);
+            heal.Close();
+            if(y!=0)
+            return "fail,you have risk";
             MySqlCommand queryNum=new MySqlCommand(query,myConn);
             MySqlDataReader reader1 = queryNum.ExecuteReader();
             int num=0;
@@ -31,8 +39,8 @@ namespace dbproj.Controllers
             {
                 Console.WriteLine(ex);
             }
-
-            string s=string.Format("insert into leaving_record values('{0}',{1},'{2}','{3}','{4}','{5}','{6}','{7}','{8}')",Leave.student_ID,num.ToString(),Leave.destination,Leave.date,Leave.transport,Leave.trip_num,"9999-12-31","未知","0000");
+             string time=DateTime.Now.ToShortDateString();
+            string s=string.Format("insert into leaving_record values('{0}',{1},'{2}','{3}','{4}','{5}','{6}','{7}','{8}')",Leave.student_ID,num.ToString(),Leave.destination,time,Leave.transport,Leave.trip_num,"9999-12-31","未知","0000");
             MySqlCommand command=new MySqlCommand(s,myConn);
             int i=command.ExecuteNonQuery();
             conn.Close();

@@ -24,11 +24,12 @@ namespace dbproj.Controllers
             MySqlConnection myConn= conn.GetConnection();
             string s="";
             int _ok=0;
+            string time=DateTime.Now.ToShortDateString();
             if(agreement.teacher_ID=="00000")
             s=string.Format("update sick_leave set teacher_ID='000' where sickleave_ID='{0}'",agreement.sickleave_ID);
             else
             {
-                s=string.Format("update sick_leave set approval_time='{0}',teacher_ID='{1}',allowed_time={2} where sickleave_ID={3}",agreement.approval_time,agreement.teacher_ID,agreement.allowedays,agreement.sickleave_ID);
+                s=string.Format("update sick_leave set approval_time='{0}',teacher_ID='{1}',allowed_time={2} where sickleave_ID={3}",time,agreement.teacher_ID,agreement.allowedays,agreement.sickleave_ID);
                 _ok=1;
             }
             MySqlCommand command=new MySqlCommand(s,myConn);

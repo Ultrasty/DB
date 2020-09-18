@@ -16,7 +16,8 @@ namespace dbproj.Controllers
         {
             Connection conn=new Connection();
             MySqlConnection myConn= conn.GetConnection();
-            string s=string.Format("update sick_leave set terminate_time='{0}' where sickleave_ID='{1}'",End.terminate_time,End.sickleave_ID);
+             string time=DateTime.Now.ToShortDateString();
+            string s=string.Format("update sick_leave set terminate_time='{0}' where sickleave_ID='{1}'",time,End.sickleave_ID);
             MySqlCommand command=new MySqlCommand(s,myConn);
             int i=command.ExecuteNonQuery();
             conn.Close();

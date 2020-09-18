@@ -70,14 +70,14 @@ namespace Health.Models
         public string student_ID;
         //public string record_ID;
         public string destination;
-        public string date;
+        //public string date;
         public string transport;
         public string trip_num;
     }
 
     public class back
     {
-        public string date_back;
+        //public string date_back;
         public string transport_back;
         public string back_num;
         public string student_ID;
@@ -99,7 +99,7 @@ namespace Health.Models
     {
         public string student_ID;
         public string reason="不舒服";
-        public string application_time;
+        public string application_time="2020-01-01";
     }  
 
     public class application12_t
@@ -126,7 +126,7 @@ namespace Health.Models
     public class agree
     {
         public string sickleave_ID;
-        public string approval_time;
+        public string approval_time="2020-01-01";
         public string teacher_ID;
         public int allowedays;
     }
@@ -134,7 +134,7 @@ namespace Health.Models
     public class end
     {
         public string sickleave_ID;
-        public string terminate_time;
+        public string terminate_time="2020-01-01";
 
     }
 
