@@ -28,6 +28,10 @@
             padding: 40px 15px;
             text-align: center;
         }
+
+        .theinput{
+            width: 300px;
+        }
     </style>
 </head>
 
@@ -93,22 +97,22 @@
         </div>
     </nav>
     
-    <div style="padding: 100px 600px 200px;" id="app">
+    <div style="padding: 100px 500px 200px;" id="app">
         <form class="bs-example bs-example-form" role="form">
             <div >
-                <input type="text" class="form-control" placeholder="请输入ID" @keyup.enter="submit"
+                <input type="text" class="form-control theinput" placeholder="请输入ID" @keyup.enter="submit"
                        v-model="id">
             </div>
             <br>
             <br>
             <div >
-                <input type="text" class="form-control" placeholder="请输入设施ID" @keyup.enter="submit"
+                <input type="text" class="form-control theinput" placeholder="请输入设施ID" @keyup.enter="submit"
                        v-model="facilityID">
             </div>
             <br>
             <br>
             <div >
-                <input type="text" class="form-control" placeholder="进设施请输入0，出设施请输入1" @keyup.enter="submit"
+                <input type="text" class="form-control theinput" placeholder="进设施请输入0，出设施请输入1" @keyup.enter="submit"
                        v-model="inOut">
             </div>
         </form> 

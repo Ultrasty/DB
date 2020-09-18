@@ -7,6 +7,11 @@ var abc = new Vue({
         inOut:"",
         result:""
     },
+
+    mounted() {
+        this.id=location.search.split("?")[1];
+    },
+
     methods: {
         submit: function () {
                 var url = "http://121.199.77.139:8090/facility/sign";

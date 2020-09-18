@@ -30,7 +30,9 @@
             text-align: center;
         }
 
-       
+       .theinput {
+           width: 300px;
+       }
     </style>
 </head>
 
@@ -70,11 +72,11 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                     aria-haspopup="true" aria-expanded="false">可预约设施序号查看<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">序号1---篮球场</a></li>
-                                    <li><a href="#">序号2---足球场</a></li>
-                                    <li><a href="#">序号3---图书馆</a></li>
-                                    <li><a href="#">序号4---羽毛球场</a></li>
-                                    <li><a href="#">序号5---乒乓球馆</a></li>
+                                    <li><a href="javascript:void(0)">序号1---篮球场</a></li>
+                                    <li><a href="javascript:void(0)">序号2---足球场</a></li>
+                                    <li><a href="javascript:void(0)">序号3---图书馆</a></li>
+                                    <li><a href="javascript:void(0)">序号4---羽毛球场</a></li>
+                                    <li><a href="javascript:void(0)">序号5---乒乓球馆</a></li>
                                 </ul>
                             </li>
                         <li><a href="facilityApply.html">清空</a></li>
@@ -96,34 +98,34 @@
                     <ul class="nav navbar-nav">
                         <!--<li class="active"><a href="#">首页</a></li>
                 <li><a href="#">登录</a></li>-->
-                        <li><a href="#">Copyright@2020</a></li>
+                        <li><a href="javascript:void(0)">Copyright@2020</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <div style="padding: 100px 600px 200px;">
+        <div style="padding: 100px 500px 200px;">
             <div class="bs-example bs-example-form" role="form">
                 <div>
-                    <input type="text" class="form-control " placeholder="请查看后输入申请设施对应的序号" @keyup.enter="submit"
+                    <input type="text" class="form-control theinput" placeholder="请查看后输入申请设施对应的序号" @keyup.enter="submit"
                         v-model="facilityNumber">
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input type="date" class="form-control " placeholder="请输入申请日期" @keyup.enter="submit"
+                    <input type="date" class="form-control theinput" placeholder="请输入申请日期" @keyup.enter="submit"
                         v-model="applyDate">
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input type="text" class="form-control " placeholder="请输入开始时刻" @keyup.enter="submit"
+                    <input type="text" class="form-control theinput" placeholder="请输入开始时刻" @keyup.enter="submit"
                         v-model="startTime">
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input type="text" class="form-control " placeholder="请输入截止时刻" @keyup.enter="submit"
+                    <input type="text" class="form-control theinput" placeholder="请输入截止时刻" @keyup.enter="submit"
                         v-model="endTime">
                 </div>
             </div>

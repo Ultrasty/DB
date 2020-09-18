@@ -65,7 +65,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="zmz/16.html">
+				<a class="J_menuItem" href="zmz/16.html">
 					<i class="fa fa fa-user-times"></i>
 					<span class="nav-label">每日信息填报</span>
 				</a>
@@ -111,10 +111,10 @@
 					<a class="J_menuItem" onclick="addTabs('yk/7.html', '查看设施开放情况', 'yk/7.html')">查看设施开放情况</a>
 				</li>
               <li>
-                <a class="J_menuItem" onclick="addTabs('yk/5.html', '预约设施', 'yk/5.html')">设施预约</a>
+                <a class="J_menuItem" v-bind:href="theUrlOf5">设施预约</a>
               </li>
               <li>
-                <a class="J_menuItem" onclick="addTabs('yk/8.html', '设施打卡','yk/8.html')">设施打卡</a>
+                <a class="J_menuItem" v-bind:href="theUrlOf8">设施打卡</a>
               </li>
               <li>
                 <a class="J_menuItem" onclick="addTabs('yk/9.html', '查询违约记录','yk/9.html')">查询违约记录</a>
@@ -174,7 +174,9 @@
         identity: "学生",
         student_number: "",
         profile_photo: "",
-        urlofchatroom: "pages/chat.html"
+        urlofchatroom: "pages/chat.html",
+        theUrlOf5:"yk/5.html",
+        theUrlOf8:"yk/8.html"
       },
       mounted: function () {
         var urlA = location.search.split('?');
@@ -182,6 +184,8 @@
         //console.log(this.student_number);
         this.profile_photo = "pages/Template/images/" + this.student_number + ".jpg";
         this.urlofchatroom = "pages/chat.html?" + this.student_number;//这句是为了chat.html这个页面能获取到url里学号的信息
+        this.theUrlOf5="yk/5.html?" + this.student_number;
+        this.theUrlOf8="yk/8.html?" + this.student_number;
       },
       methods: {}
     })
