@@ -13,6 +13,8 @@ var abc = new Vue({
         submit: function () {
             var url = "http://121.199.77.139:8090/facility/apply";
             var that=this;
+            var urlA=location.search.split('?');
+            this.ID=urlA[1];
             axios.post(
                 url, {
                     "id": this.ID,
