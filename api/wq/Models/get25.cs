@@ -9,7 +9,6 @@ public class city_risk{
 public class SSSs{
     public string Province { get; set; }
     public string City{get;set;}
-   
- 
+
     public int    Risk_level{get;set;}
 }

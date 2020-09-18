@@ -20,3 +20,8 @@ public class clockin{
   
 
 }
+public class req23 {
+    public string date;
+
+
+}

@@ -10,3 +10,7 @@ public	string	city{get;set;}
 public	int	risk_level{get;set;}
 public	DateTime	date{get;set;}
 }
+public class req20
+{
+    public string date { get; set; }
+}

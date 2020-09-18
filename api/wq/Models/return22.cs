@@ -7,5 +7,8 @@
 
 
     }
-    
+    public class req22
+{
+    public string trip_num { get; set; }
+}
 
