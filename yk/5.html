@@ -48,8 +48,11 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
+                            <li class="dropdown">
+                           
                         </button>
                         <a class="navbar-brand" href="#">设施预约</a>
+                       
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,18 +64,20 @@
                     
                     <!--</form>-->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="facilityApply.html">清空</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false">其他<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false">可预约设施序号查看<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">序号1---篮球场</a></li>
+                                    <li><a href="#">序号2---足球场</a></li>
+                                    <li><a href="#">序号3---图书馆</a></li>
+                                    <li><a href="#">序号4---羽毛球场</a></li>
+                                    <li><a href="#">序号5---乒乓球馆</a></li>
+                                </ul>
+                            </li>
+                        <li><a href="facilityApply.html">清空</a></li>
+                        
                     </ul>
                 </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -99,31 +104,25 @@
         <div style="padding: 100px 600px 200px;">
             <div class="bs-example bs-example-form" role="form">
                 <div>
-                    <input type="text" class="form-control " placeholder="请输入ID" @keyup.enter="submit"
-                        v-model="ID">
-                </div>
-                <br>
-                <br>
-                <div>
-                    <input type="text" class="form-control " placeholder="请输入申请设施序号" @keyup.enter="submit"
+                    <input type="text" class="form-control " placeholder="请查看后输入申请设施对应的序号" @keyup.enter="submit"
                         v-model="facilityNumber">
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input type="text" class="form-control " placeholder="请输入申请日期" @keyup.enter="submit"
+                    <input type="date" class="form-control " placeholder="请输入申请日期" @keyup.enter="submit"
                         v-model="applyDate">
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input type="text" class="form-control " placeholder="请输入开始时间" @keyup.enter="submit"
+                    <input type="text" class="form-control " placeholder="请输入开始时刻" @keyup.enter="submit"
                         v-model="startTime">
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input type="text" class="form-control " placeholder="请输入截止时间" @keyup.enter="submit"
+                    <input type="text" class="form-control " placeholder="请输入截止时刻" @keyup.enter="submit"
                         v-model="endTime">
                 </div>
             </div>
