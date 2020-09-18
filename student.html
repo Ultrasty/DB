@@ -52,109 +52,70 @@
           <!--下面这一行如果去掉那侧边栏收起来之后就回不来了-->
           <a class="navbar-minimalize" href="#"></a>
 
-          <li>
-            <a class="J_menuItem" v-bind:href="urlofchatroom">
-              <i class="fa fa-home"></i>
-              <span class="nav-label">疫情交流室</span>
-            </a>
-          </li>
-
+			<li>
+				<a class="J_menuItem" v-bind:href="urlofchatroom">
+					<i class="fa fa-home"></i>
+					<span class="nav-label">疫情交流室</span>
+				</a>
+			</li>
+			<li>
+				<a href="zmz/16.html">
+					<i class="fa fa fa-user-times"></i>
+					<span class="nav-label">每日信息填报</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa fa fa-user-times"></i>
+					<span class="nav-label">申请出校返校</span>
+					<span class="fa arrow"></span>
+				</a>
+				<ul class="nav nav-second-level">
+					<li>
+						<a class="J_menuItem" onclick="addTabs('ljw/14-1.html', '返校申请', 'ljw/14-1.html')">返校申请</a>
+					</li>
+					<li>
+						<a class="J_menuItem" onclick="addTabs('ljw/14-2.html', '出校申请', 'ljw/14-2.html')">出校申请</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa fa fa-user-times"></i>
+					<span class="nav-label">申请病假销假</span>
+					<span class="fa arrow"></span>
+				</a>
+				<ul class="nav nav-second-level">
+					<li>
+						<a class="J_menuItem" onclick="addTabs('ljw/12-1.html', '返校申请', 'ljw/12-1.html')">申请病假</a>
+					</li>
+					<li>
+						<a class="J_menuItem" onclick="addTabs('ljw/12-2.html', '出校申请', 'ljw/12-2.html')">申请销假</a>
+					</li>
+				</ul>
+			</li>
           <li>
             <a href="#">
               <i class="fa fa fa-users"></i>
-              <span class="nav-label">功能2</span>
+              <span class="nav-label">设施使用</span>
               <span class="fa arrow"></span>
             </a>
             <ul class="nav nav-second-level">
+				<li>
+					<a class="J_menuItem" onclick="addTabs('yk/7.html', '查看设施开放情况', 'yk/7.html')">查看设施开放情况</a>
+				</li>
               <li>
-                <a class="J_menuItem" onclick="addTabs('1.html', '查询', './pages/SearchVehicle.html')">查询</a>
+                <a class="J_menuItem" onclick="addTabs('yk/5.html', '预约设施', 'yk/5.html')">设施预约</a>
               </li>
               <li>
-                <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
+                <a class="J_menuItem" onclick="addTabs('yk/8.html', '设施打卡','yk/8.html')">设施打卡</a>
               </li>
               <li>
-                <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa fa-user-times"></i>
-              <span class="nav-label">功能3</span>
-              <span class="fa arrow"></span>
-            </a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
+                <a class="J_menuItem" onclick="addTabs('yk/9.html', '查询违约记录','yk/9.html')">查询违约记录</a>
               </li>
             </ul>
           </li>
-          <li>
-            <a href="#">
-              <i class="fa fa fa-file-o"></i>
-              <span class="nav-label">功能4</span>
-              <span class="fa arrow"></span>
-            </a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa fa-files-o"></i>
-              <span class="nav-label">功能5</span>
-              <span class="fa arrow"></span>
-            </a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa fa-edit"></i>
-              <span class="nav-label">功能6</span>
-              <span class="fa arrow"></span>
-            </a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a class="J_menuItem" onclick="addTabs('1.html', '添加用户', 'user/1.html')">添加用户</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('2.html', '添加用户2','user/2.html')">添加用户2</a>
-              </li>
-              <li>
-                <a class="J_menuItem" onclick="addTabs('3.html', '添加用户3','user/3.html')">添加用户3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa fa-rebel"></i>
-              <span class="nav-label">功能7</span>
-            </a>
-          </li>
+          
         </ul>
       </div>
     </nav>
