@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using MySql.Data.MySqlClient;
-
 using System.IO;
 using System.Net;
 using Newtonsoft.Json;
@@ -18,18 +16,18 @@ namespace dbproj.Controllers
     {
 
          [HttpPost]
-        public string Post(agree agreement)
+        public string Post([FromBody] agree agreement)
         {
             Connection conn=new Connection();
             MySqlConnection myConn= conn.GetConnection();
             string s="";
             int _ok=0;
-            string time=DateTime.Now.ToShortDateString();
+            //string time=DateTime.Now.ToShortDateString();
             if(agreement.teacher_ID=="00000")
-            s=string.Format("update sick_leave set teacher_ID='000' where sickleave_ID='{0}'",agreement.sickleave_ID);
+            s=string.Format("update sick_leave set teacher_ID='000' where sickleave_ID={0}",agreement.sickleave_ID);
             else
             {
-                s=string.Format("update sick_leave set approval_time='{0}',teacher_ID='{1}',allowed_time={2} where sickleave_ID={3}",time,agreement.teacher_ID,agreement.allowedays,agreement.sickleave_ID);
+                s=string.Format("update sick_leave set approval_time='{0}',teacher_ID='{1}',allowed_time={2} where sickleave_ID={3}",agreement.approval_time,agreement.teacher_ID,agreement.allowedays.ToString(),agreement.sickleave_ID);
                 _ok=1;
             }
             MySqlCommand command=new MySqlCommand(s,myConn);
@@ -37,15 +35,17 @@ namespace dbproj.Controllers
             string sql=string.Format("select student_ID from sick_leave where sickleave_ID={0}",agreement.sickleave_ID);
             MySqlCommand command1=new MySqlCommand(sql,myConn);
             MySqlDataReader reader= command1.ExecuteReader();
+            reader.Read();
             string sid=reader.GetString(0);
+            Console.WriteLine("\n"+sid+"\n");
+            reader.Close();
             conn.Close();
             string url = "http://101.132.145.102:5000/api/sendmessage";
             string ss="";
             string sss="";
+            Message t= new Message();
             if(i!=0)
                 {
-                    
-                    Message t= new Message();
                     t.sender_id = "00000";
                     t.receiver_id=sid;
                     if(_ok==1)
@@ -54,9 +54,9 @@ namespace dbproj.Controllers
                         t.content="你的病假申请被驳回";
                     ss = JsonConvert.SerializeObject(t);
                     sss = Post1(url, ss);
+                    return "success";
                 }
-            if(i!=0)
-                return "success";
+                
             return "fail";
         }
 
@@ -65,7 +65,7 @@ namespace dbproj.Controllers
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json";
             request.Method = "POST";
-            request.Timeout = 100000;
+            request.Timeout = 10000000;
 
             byte[] bytes = Encoding.UTF8.GetBytes(postData);
             request.ContentLength = bytes.Length;

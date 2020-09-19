@@ -28,7 +28,7 @@ namespace dbproj.Controllers
                 result.arr[i].date=reader.GetDateTime("date").ToShortDateString();
                 result.arr[i].date_back=reader.GetDateTime("date_back").ToShortDateString();
                 result.arr[i].destination=reader.GetString("destination");
-                result.arr[i].record_ID=reader.GetInt16("record_ID");
+                result.arr[i].record_ID=reader.GetInt16("record_ID").ToString(); //
                 result.arr[i].student_ID=reader.GetString("student_ID");
                 result.arr[i].transport=reader.GetString("transport");
                 result.arr[i].trip_num=reader.GetString("trip_num");

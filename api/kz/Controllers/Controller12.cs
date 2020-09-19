@@ -32,8 +32,8 @@ namespace dbproj.Controllers
             {
                 Console.WriteLine(ex);
             }
-            string time=DateTime.Now.ToShortDateString();
-            string s=string.Format("insert into sick_leave values({0},{1},'00000','{2}','2020-01-01',0,'2020-01-01',\"{3}\")",num.ToString(),application12.student_ID,time,application12.reason);
+            //string time=DateTime.Now.ToShortDateString();
+            string s=string.Format("insert into sick_leave values({0},{1},'00000','{2}','2020-01-01',0,'2020-01-01',\"{3}\")",num.ToString(),application12.student_ID,application12.application_time,application12.reason);
             Console.WriteLine("\n"+s+"\n");
             int i=0;
             MySqlCommand command1=new MySqlCommand(s,myConn);  
@@ -108,9 +108,9 @@ namespace dbproj.Controllers
                 {
                     application12_t result=new application12_t();
                     result.student_ID=reader.GetString("student_ID");
-                    result.sickleave_ID=reader.GetInt16("sickleave_ID");
+                    result.sickleave_ID=reader.GetInt16("sickleave_ID").ToString();  //
                     result.teacher_ID=reader.GetString("teacher_ID");
-                    result.allowedays=reader.GetInt16("allowed_time");
+                    result.allowedays=reader.GetInt16("allowed_time").ToString();   //
                     result.approval_time=reader.GetDateTime("approval_time").ToShortDateString();
                     result.terminate_time=reader.GetDateTime("terminate_time").ToShortDateString();
                     result.reason=reader.GetString("reason");

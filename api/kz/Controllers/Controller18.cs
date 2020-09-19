@@ -34,17 +34,21 @@ namespace dbproj.Controllers
             {
                 status temp=new status();
                 temp.healthcode_color=reader.GetString("healthcode_color");
-                temp.currenthealth_status=reader.GetInt16("currenthealth_status");
+                temp.currenthealth_status=reader.GetInt16("currenthealth_status").ToString();
                 temp.student_ID=reader.GetString("student_ID");
                 if(!reader.IsDBNull(4))
-                    temp.terminate_time=reader.GetDateTime("terminate_time").ToShortDateString();
+                    {
+                        temp.terminate_time=reader.GetDateTime("terminate_time").ToShortDateString();
+                        if(temp.terminate_time=="2020-01-01")
+                            temp.terminate_time="病假中";
+                    }
                 else
                     temp.terminate_time="null";
                 if(!reader.IsDBNull(3))
-                temp.sickleave_ID=reader.GetInt16("sickleave_ID");
+                temp.sickleave_ID=reader.GetInt16("sickleave_ID").ToString();
                 //-1表示无病假历史
                 else
-                temp.sickleave_ID=-1;
+                temp.sickleave_ID="-1";     //
                 result.unhealths[i]=temp;
                 i++;
             }

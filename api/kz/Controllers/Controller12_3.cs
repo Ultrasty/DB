@@ -26,7 +26,7 @@ namespace dbproj.Controllers
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                return "该ID不存在";
+                return "fail";
             }
             string result=reader.GetString(0);
             reader.Close();

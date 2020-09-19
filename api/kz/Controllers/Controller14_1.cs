@@ -31,8 +31,8 @@ namespace dbproj.Controllers
             reader.Read();
             int x=reader.GetInt16(0);
             reader.Close();
-            string time=DateTime.Now.ToShortDateString();
-            string updatesql=string.Format("update leaving_record set date_back='{0}',transport_back='{1}',back_num='{2}' where student_ID='{3}' and record_ID={4}",time,Back.transport_back,Back.back_num,Back.student_ID,x.ToString());
+            //string time=DateTime.Now.ToShortDateString();
+            string updatesql=string.Format("update leaving_record set date_back='{0}',transport_back='{1}',back_num='{2}' where student_ID='{3}' and record_ID={4}",Back.date_back,Back.transport_back,Back.back_num,Back.student_ID,x.ToString());
             MySqlCommand excute=new MySqlCommand(updatesql,myConn);
             int i=excute.ExecuteNonQuery();
             conn.Close();

@@ -16,9 +16,13 @@ namespace Health.Models
         //健康码颜色
         public string healthcode_color;  
         //目前健康状况
-        public int currenthealth_status;
+        //
+         public string currenthealth_status;
+        //
+
           //病假ID
-        public int sickleave_ID;
+          //
+        public string sickleave_ID;
 
         public string terminate_time;
     }
@@ -33,14 +37,15 @@ namespace Health.Models
 
     public class return17
     {
-        public outStudent[] outStudents=new outStudent[20];
+        public outStudent[] outStudents=new outStudent[50];
     }
 
     public class return16
     {
         public string s_id;
         public string date;
-        public int health_situation;
+        //
+          public string health_situation;
         public string current_province;
         public string current_city;
     }
@@ -61,7 +66,9 @@ namespace Health.Models
         public string date_back;
         public string transport_back;
         public string back_num;
-        public int record_ID;
+
+        //
+        public string record_ID;
 
     }
 
@@ -70,14 +77,14 @@ namespace Health.Models
         public string student_ID;
         //public string record_ID;
         public string destination;
-        //public string date;
+        public string date;
         public string transport;
         public string trip_num;
     }
 
     public class back
     {
-        //public string date_back;
+        public string date_back;
         public string transport_back;
         public string back_num;
         public string student_ID;
@@ -90,7 +97,9 @@ namespace Health.Models
         public string teacher_ID;
         public string application_time;
         public string approval_time;
-        public int allowedays;
+
+
+        public string allowedays;
         public string terminate_time;
         public string reason;
     }
@@ -113,8 +122,12 @@ namespace Health.Models
         public string application_time;
 
         public string reason;
-        public int allowedays;
-        public int sickleave_ID;
+
+        //
+        public string allowedays;
+
+        //
+        public string sickleave_ID;
     }
 
     public class return12
@@ -128,7 +141,7 @@ namespace Health.Models
         public string sickleave_ID;
         public string approval_time="2020-01-01";
         public string teacher_ID;
-        public int allowedays;
+        public string allowedays;
     }
 
     public class end
