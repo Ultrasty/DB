@@ -122,7 +122,7 @@
         // 签到数据
         signinTableData: [],
         // 设施信息表
-        facility: ['图书馆', '体育馆', '篮球场', '足球场', '羽毛球馆'],
+        facility: ['图书馆', '体育馆', '篮球馆', '足球馆', '羽毛球馆'],
         Sfacility: '',
         facilityID: {},
         // 编辑设备对话框
@@ -236,10 +236,10 @@
             if (valid) {
               // 同步化 axios
               try {
-                let res = await axios.post('http://121.199.77.139:8090/facility/alter', {
+                let res = await axios.post('http://121.199.77.139:8090/facility/alter',
                   //  请求参数
-                  date: this.formFacility
-                })
+                  this.formFacility
+                )
                 if (res.data.result == "success") {
                   return this.$message.success('修改成功!')
                 }
