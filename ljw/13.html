@@ -192,7 +192,7 @@
               "approval_time": this.approval_time,
               "sickleave_ID": this.sickleave_ID
             }).then(function (response) {
-            alert("提交成功");
+           alert(that.result);
             that.result = response.data;
             console.log(response.data)
           }, function (err) {
