@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>学生每日信息填报</title>
-    <style type="text/css">#iCenter{width:300px; height: 280px; border:1px #000 solid;margin:20px auto;}</style>
+    <style type="text/css">#iCenter{width:300px; height: 280px; border:1px #000000 solid;margin:20px auto;}</style>
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.3&key=a891b01ccf95c0a35d1d30a5fe4b4267"></script>
     <link rel="stylesheet" href="../pages/lib/bootstrap.css">
     <script src="../pages/lib/vue.js"></script>
@@ -110,41 +110,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    var mapObj = new AMap.Map('iCenter');
-    mapObj.plugin('AMap.Geolocation', function () {
-        geolocation = new AMap.Geolocation({
-            enableHighAccuracy: true, // 是否使用高精度定位，默认:true
-            timeout: 10000,           // 超过10秒后停止定位，默认：无穷大
-            maximumAge: 100000,            // 定位结果缓存0毫秒，默认：0
-            convert: true,            // 自动偏移坐标，偏移后的坐标为高德坐标，默认：true
-            showButton: true,         // 显示定位按钮，默认：true
-            buttonPosition: 'LB',     // 定位按钮停靠位置，默认：'LB'，左下角
-            buttonOffset: new AMap.Pixel(10, 20), // 定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-            showMarker: true,         // 定位成功后在定位到的位置显示点标记，默认：true
-            showCircle: true,         // 定位成功后用圆圈表示定位精度范围，默认：true
-            panToLocation: true,      // 定位成功后将定位到的位置作为地图中心点，默认：true
-            zoomToAccuracy:true       // 定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
-        });
-        mapObj.addControl(geolocation);
-        geolocation.getCurrentPosition();
-        AMap.event.addListener(geolocation, 'complete', onComplete); // 返回定位信息
-        AMap.event.addListener(geolocation, 'error', onError);       // 返回定位出错信息
-    });
-    function onComplete(obj){
-        var res = '经纬度：' + obj.position +
-            '\n精度范围：' + obj.accuracy +
-            '米\n定位结果的来源：' + obj.location_type +
-            '\n状态信息：' + obj.info;
-        console.log(obj.position);
-        abc.b1=obj.position.Q;
-        abc.b2=obj.position.R;
-        alert(res);
-    }
-    function onError(obj) {
-        alert(obj.info + '--' + obj.message);
-    }
-
-    var abc = new Vue({
+        var abc = new Vue({
         el: "#app",
         data: {
             number1:"",
@@ -156,6 +122,41 @@
             b1:0,
             b2:0
         },
+       mounted(){
+           var mapObj = new AMap.Map('iCenter');
+           mapObj.plugin('AMap.Geolocation', function () {
+               geolocation = new AMap.Geolocation({
+                   enableHighAccuracy: true, // 是否使用高精度定位，默认:true
+                   timeout: 10000,           // 超过10秒后停止定位，默认：无穷大
+                   maximumAge: 100000,            // 定位结果缓存0毫秒，默认：0
+                   convert: true,            // 自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+                   showButton: true,         // 显示定位按钮，默认：true
+                   buttonPosition: 'LB',     // 定位按钮停靠位置，默认：'LB'，左下角
+                   buttonOffset: new AMap.Pixel(10, 20), // 定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                   showMarker: true,         // 定位成功后在定位到的位置显示点标记，默认：true
+                   showCircle: true,         // 定位成功后用圆圈表示定位精度范围，默认：true
+                   panToLocation: true,      // 定位成功后将定位到的位置作为地图中心点，默认：true
+                   zoomToAccuracy:true       // 定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+               });
+               mapObj.addControl(geolocation);
+               geolocation.getCurrentPosition();
+               AMap.event.addListener(geolocation, 'complete', onComplete); // 返回定位信息
+               AMap.event.addListener(geolocation, 'error', onError);       // 返回定位出错信息
+           });
+           function onComplete(obj){
+               var res = '经纬度：' + obj.position +
+                   '\n精度范围：' + obj.accuracy +
+                   '米\n定位结果的来源：' + obj.location_type +
+                   '\n状态信息：' + obj.info;
+               console.log(obj.position);
+               abc.b1=obj.position.Q;
+               abc.b2=obj.position.R;
+               alert(res);
+           }
+           function onError(obj) {
+               alert(obj.info + '--' + obj.message);
+           }
+       },
         methods: {
             submit: function () {
                 if ((this.b2<122)&&(this.b2>120)&&(this.b1<32)&&(this.b1>30)){
