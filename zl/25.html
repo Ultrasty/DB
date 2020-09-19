@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../pages/lib/bootstrap.css">
-    <script src="../pages/lib/vue.js"></script>
-    <script src="../pages/lib/jquery.js"></script>
-    <script src="../pages/lib/bootstrap.js"></script>
-    <script src="../pages/lib/axios.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap.css">
+    <script src="lib/vue.js"></script>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/axios.js"></script>
 
     <!--CDN
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -49,18 +49,17 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">查询学院负责人</a>
+                        <a class="navbar-brand" href="#">录入地图数据</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        
-                        <!--<form class="navbar-form navbar-left">-->
+                       
 
 
                     </div>
                     <!--</form>-->
-                   
+                  
                 </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
         </nav>
@@ -86,14 +85,26 @@
         <div style="padding: 100px 600px 200px;">
             <div class="bs-example bs-example-form" role="form">
                 <div>
-                    <input type="text" class="form-control " placeholder="请输入id" @keyup.enter="submit"
-                        v-model="id">
+                    <input type="text" class="form-control " placeholder="请输入省份" @keyup.enter="submit"
+                        v-model="province">
+                </div>
+                <br>
+                <br>
+                <div>
+                    <input type="text" class="form-control " placeholder="请输入城市" @keyup.enter="submit"
+                        v-model="city">
+                </div>
+                <br>
+                <br>
+                <div>
+                    <input type="text" class="form-control " placeholder="请输入感染等级" @keyup.enter="submit"
+                        v-model="risk_level">
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="searchSchool.js"> </script>
+    <script src="recordMap.js"> </script>
 
 </body>
 
