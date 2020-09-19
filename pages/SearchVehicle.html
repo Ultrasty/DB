@@ -105,8 +105,8 @@
 
   <script src="./lib/vue.js"></script>
   <script src="lib/axios.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <link rel="stylesheet" href="lib/index.css">
+  <script src="lib/index.js"></script>
   <script>
     const app = new Vue({
       el: '#app',
@@ -181,12 +181,13 @@
         },
         // 打卡查询
         async searchSignin() {
+          var datestr = new Date(this.searchDate).getUTCFullYear() + '年' + (new Date(this.searchDate).getMonth() + 1) + '月' + new Date(this.searchDate).getDate() + '日'
           // 同步化 axios
           let obj = {
           }
           try {
             let res = await axios.post('http://49.234.96.221:82/api/23', {
-              trip_num: this.vehicle
+              date: datestr
             })
             this.signinTableData = res.data
             this.$message.success('获取成功!')
