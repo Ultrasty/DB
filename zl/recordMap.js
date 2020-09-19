@@ -18,6 +18,11 @@ var abc = new Vue({
                   "risk_level": this.risk_level
               }]).then(function (response) {
               console.log(response.data);
+            if(response.data==="更新成功")
+              alert("更新成功");
+
+              if(response.data==="更新失败,输入错误")
+              alert("更新失败，输入错误");
           }, function (err) {
               console.log(err);
           })
