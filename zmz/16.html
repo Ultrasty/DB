@@ -7,10 +7,10 @@
     <style type="text/css">#iCenter{width:300px; height: 280px; border:1px #000 solid;margin:20px auto;}</style>
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.3&key=a891b01ccf95c0a35d1d30a5fe4b4267"></script>
     <link rel="stylesheet" href="../pages/lib/bootstrap.css">
-    <script src="../pages/lib/vue.js"></script>
     <script src="../pages/lib/jquery.js"></script>
     <script src="../pages/lib/bootstrap.js"></script>
     <script src="../pages/lib/axios.js"></script>
+    <script src="../pages/lib/vue.js"></script>
     <!--CDN
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -30,6 +30,7 @@
 
 
     </style>
+
 </head>
 <body>
 <div id="app">
@@ -55,7 +56,7 @@
                     <div class="form-group">
                         <label>填报学生学号:</label>
                         <input id="number" type="text" class="form-control" v-model="number1"/>
-                        <label>请输入查询日期:</label>
+                        <label>请输入填报日期:</label>
                         <input id="date" type="date" class="form-control" v-model="data"/>
                     </div>
                     <button type="submit" class="btn btn-default" @click="submit">提交</button>
@@ -106,7 +107,7 @@
             <br>
             <h3>请定位您今日所在的区域：</h3>
             <div id="iCenter"></div>
-            <p id="location">您所在的位置为：</p>
+            
         </div>
     </div>
 </div>
