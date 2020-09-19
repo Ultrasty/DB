@@ -18,6 +18,7 @@ var abc = new Vue({
                   }).then(function (response) {
                   console.log(response.data.result);
                  that.result=response.data.result;
+                 var alert_msg="查找成功\n"+"学院："+response.data.building+"\n"+"负责人："+response.data.name+"\n"+"联系方式："+response.data.phonenumber;
                  if(that.result==="wrong id")
                  alert("id不存在");
                  if(that.result==="success")
