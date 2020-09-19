@@ -64,7 +64,7 @@
             
             
               <p>请填写申请病假时间：</p>
-             <input v-model = "application_time" placeholder= "编辑我……"onclick="createOutDiv()" id ="putid">
+             <input v-model = "application_time" placeholder= "格式：xxxx-xx-xx"onclick="createOutDiv()" id ="putid">
           
              <!-- <p>请填写预计销假时间：</p>
              <input v-model = "endtime" placeholder= "编辑我……"> -->
@@ -118,9 +118,10 @@
             "reason":this.reason,
             "application_time":this.application_time
 					}).then(function (response) {
-						alert("提交成功");
+						
 						that.result = response.data;
 						console.log(response.data)
+					        alert(that.result);
 						}, function (err) {
 							console.log(err);
 						})
