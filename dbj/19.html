@@ -61,8 +61,8 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						   aria-expanded="false">其他 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="login.html">退出登录</a></li>
-							<li><a href="administer.html">返回主页</a></li>
+							<li><a href="..\index.html">退出登录</a></li>
+							<li><a href="..\pages\gettable.html">返回主页</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -152,10 +152,11 @@
                 var url = "http://49.234.96.221:82/api/19";
                 let that = this;
                 axios.get(url).then(function (response) {
-					console.log("123456");
                     that.result = response.data;
                     that.isshow=true;
-					console.log(response.data)
+					if(that.result.length===0) {
+                        alert("暂无未分配新生！");
+                    }
                 }, function (err) {
                     console.log(err);
                 })

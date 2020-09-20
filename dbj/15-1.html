@@ -64,8 +64,8 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						   aria-expanded="false">其他 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="login.html">退出登录</a></li>
-							<li><a href="administer.html">返回主页</a></li>
+							<li><a href="..\index.html">退出登录</a></li>
+							<li><a href="..\pages\gettable.html">返回主页</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -127,9 +127,11 @@
                 let that = this;
 				console.log(this.student_ID);
 				await axios.get(url).then(function (response) {
-					
 					that.result = response.data;
 					console.log(response.data);
+					if(that.result[0]===null) {
+                        alert("该学生无进出校记录！");
+                    }
 				}, function (err) {
 					console.log(err);
 				})
