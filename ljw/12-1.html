@@ -118,10 +118,9 @@
             "reason":this.reason,
             "application_time":this.application_time
 					}).then(function (response) {
-						
-						that.result = response.data;
+					
 						console.log(response.data)
-					        alert(that.result);
+					        alert(response.data);
 						}, function (err) {
 							console.log(err);
 						})
