@@ -55,8 +55,8 @@
             "transport":this.transport,
             "trip_num":this.trip_num
 					}).then(function (response) {
-						alert(that.result);
-						that.result = response.data;
+                    console.log(response.data)
+					    alert(response.data);
 						console.log(response.data)
 						}, function (err) {
 							console.log(err);

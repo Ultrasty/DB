@@ -192,8 +192,7 @@
               "approval_time": this.approval_time,
               "sickleave_ID": this.sickleave_ID
             }).then(function (response) {
-           alert(that.result);
-            that.result = response.data;
+           alert(response.data);
             console.log(response.data)
           }, function (err) {
             console.log(err);
@@ -215,7 +214,7 @@
           axios.get("http://49.234.96.221:85/api/13".concat("/", this.sickleave_ID)).then(function (response) {
             console.log(response.data);
             // that.sickleave_ID = response.sickleave_ID;
-            that.sickList = response;
+            that.sickList = response.data;
             that.ifshow = true;
           }, function (err) {})
         }

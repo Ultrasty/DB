@@ -50,8 +50,7 @@
             "transport_back":this.transport_back,
             "back_num":this.back_num
 					}).then(function (response) {
-						alert(that.result);
-						that.result = response.data;
+						alert(response.data)
 						console.log(response.data)
 						}, function (err) {
 							console.log(err);

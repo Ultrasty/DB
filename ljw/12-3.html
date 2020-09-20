@@ -39,8 +39,7 @@
             "sickleave_ID": this.sickleave_ID,
             "terminate_time":this.terminate_time
 					}).then(function (response) {
-						alert(that.result);
-						that.result = response.data;
+						alert(response.data);
 						console.log(response.data)
 						}, function (err) {
 							console.log(err);
