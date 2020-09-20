@@ -46,7 +46,8 @@
                 <img class="head" v-bind:src="profile_photo">
               </div>
               <div class="nick-name">{{teacher_number}}</div>
-              <div>{{identity}}</div>
+              <div>{{identity}}</div><br>
+			  <a href="index.html">退出登录</a>
             </div>
           </li>
           <!--下面这一行如果去掉那侧边栏收起来之后就回不来了-->
@@ -60,13 +61,13 @@
           </li>
 
           <li>
-            <a class="J_menuItem" href="ljw/13.html">
+            <a href="ljw/13.html">
               <i class="fa fa fa-users"></i>
               <span class="nav-label">审批学生病假单</span>
             </a>
           </li>
 		  <li>
-            <a class="J_menuItem" href="pages/SearchVehicle.html">
+            <a href="ywt/24.html">
               <i class="fa fa fa-users"></i>
               <span class="nav-label">查看未打卡学生</span>
             </a>
@@ -82,7 +83,7 @@
 
 
       <div class="row J_mainContent" id="content-main">
-        <iframe id="J_iframe" width="100%" height="100%" v-bind:src="urlofchatroom" frameborder="0"
+        <iframe id="J_iframe" width="100%" height="100%" src="pages/gettable.html" frameborder="0"
           data-id="user-list.html" seamless></iframe>
       </div>
 
@@ -129,8 +130,8 @@
         var urlA = location.search.split('?');
         this.student_number = urlA[1];
         //console.log(this.student_number);
-        this.profile_photo = "pages/Template/images/" + this.student_number + ".jpg";
-        this.urlofchatroom = "pages/chat.html?" + this.student_number;//这句是为了chat.html这个页面能获取到url里学号的信息
+        this.profile_photo = "pages/Template/images/" + this.teacher_number + ".jpg";
+        this.urlofchatroom = "pages/chat.html?" + this.teacher_number;//这句是为了chat.html这个页面能获取到url里学号的信息
       },
       methods: {}
     })
